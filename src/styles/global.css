@@ -43,11 +43,50 @@ a:focus {
 }
 
 .body-container {
+  min-height: 100vh;
+}
+.body-container.index {
   display: flex;
   justify-content: center;
   align-content: center;
-  min-height: 100vh;
   flex-direction: column;
+}
+.header-background {
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  overflow: hidden;
+  z-index: -2;
+  top: 0;
+  left: 0;
+}
+canvas#header-background-canvas {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 60%;
+  transform: rotate(4deg) scale(2) translateY(0%);
+  --gradient-color-1: #4805ba;
+  --gradient-color-2: #f728f3;
+  --gradient-color-3: #158a15;
+  --gradient-color-4: #305995;
+  --gradient-speed: 0.000006;
+}
+
+.header .logo {
+  max-width: 100px;
+  max-height: 100px;
+}
+.header .logo-wrapper {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0;
 }
 .main,
 .footer {

@@ -1,0 +1,30 @@
+---
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/pixel-art';
+
+const avatar = createAvatar(style, {
+  seed: 'brandon'
+});
+const logo = '//avatars.dicebear.com/api/pixel-art/hello.svg?beard=variant01&beardProbability=100&hairProbability=0&accessoriesProbability=0&hatProbability=0&skinColor=variant02';
+---
+<header class="header">
+    <div class="header-background">
+        <canvas id="header-background-canvas" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js"></script>
+    <script>
+        // const gradient = new Gradient();
+        // gradient.initGradient("#header-background-canvas");
+    </script>
+    <div class="logo-wrapper">
+        <img src={logo} alt="Brandon Martin" class="logo header-logo">
+        <p>Brandon Martin</p>
+    </div>
+    <nav class="navigation">
+        <ul>
+            <li><a href="/about" class="nav-link">about</a></li>
+            <li><a href="/uses" class="nav-link">uses</a></li>
+            <li><a href="/now" class="nav-link">now</a></li>
+        </ul>
+    </nav>
+</header>

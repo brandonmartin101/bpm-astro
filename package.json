@@ -18,6 +18,8 @@
     "astro": "^1.1.2"
   },
   "dependencies": {
+    "@dicebear/avatars": "^4.10.3",
+    "@dicebear/pixel-art": "^4.10.3",
     "preact": "^10.7.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
