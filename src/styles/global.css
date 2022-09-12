@@ -51,22 +51,18 @@ a:focus {
   align-content: center;
   flex-direction: column;
 }
-.header-background {
-  background-color: #fff;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
+.header {
   overflow: hidden;
-  z-index: -2;
-  top: 0;
-  left: 0;
 }
-canvas#header-background-canvas {
+.header-background {
   z-index: -1;
   position: absolute;
-  width: 100%;
-  height: 60%;
-  transform: rotate(4deg) scale(2) translateY(0%);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: rotate(0deg) scale(2) translateY(0%);
+  background: #4805ba;
   --gradient-color-1: #4805ba;
   --gradient-color-2: #f728f3;
   --gradient-color-3: #158a15;
@@ -78,7 +74,7 @@ canvas#header-background-canvas {
   max-width: 100px;
   max-height: 100px;
 }
-.header .logo-wrapper {
+.header {
   display: flex;
   align-content: center;
   align-items: center;
@@ -87,6 +83,9 @@ canvas#header-background-canvas {
   font-size: 1.4rem;
   font-weight: bold;
   margin: 0;
+}
+.header li {
+  list-style-type: none;
 }
 .main,
 .footer {
@@ -153,4 +152,9 @@ canvas#header-background-canvas {
 
 .counter-message {
   text-align: center;
+}
+
+.white,
+a.white {
+  color: #fff;
 }
