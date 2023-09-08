@@ -1,0 +1,21 @@
+---
+import '../styles/reset.css';
+import '../styles/global.css';
+import Helmet from '../components/Helmet.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const {title} = Astro.props;
+---
+<html lang="en">
+	<Helmet title={`Brandon Martin | ${title}`}/>
+	<body>
+		<div class="body-container">
+			<Header />
+			<main class="main">
+                <slot />
+            </main>
+            <Footer />
+        </div>
+    </body>
+</html>

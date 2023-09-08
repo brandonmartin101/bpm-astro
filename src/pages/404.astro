@@ -1,0 +1,16 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SitemapLinks from '../components/SitemapLinks.astro';
+---
+
+<PageLayout title='404'>
+	<h1>404</h1>
+	<h2 class='h5'>You are lost. Looking for another page?</h2>
+	<SitemapLinks />
+</PageLayout>
+
+<style>
+	.h5 {
+		margin: 10px 0 50px;
+	}
+</style>

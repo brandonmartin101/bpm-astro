@@ -1,20 +1,14 @@
 ---
-import '../styles/reset.css';
-import '../styles/global.css';
-import Helmet from '../components/Helmet.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<html lang="en">
-	<Helmet />
-	<body>
-		<div class="body-container">
-			<Header />
-			<main class="main">
+<PageLayout title='Now'>
+	<h1>Now</h1>
+	<p>A small summary of what I'm up to right now.</p>
+</PageLayout>
 
-            </main>
-            <Footer />
-        </div>
-    </body>
-</html>
+<style>
+	.h5 {
+		margin: 10px 0 50px;
+	}
+</style>

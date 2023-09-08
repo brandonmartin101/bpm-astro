@@ -1,20 +1,8 @@
 ---
-import '../styles/reset.css';
-import '../styles/global.css';
-import Helmet from '../components/Helmet.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<html lang="en">
-	<Helmet />
-	<body>
-		<div class="body-container">
-			<Header />
-			<main class="main">
-                <p>This page is just a small overview of the software/products I use on a daily/frequent basis.</p>
-            </main>
-            <Footer />
-        </div>
-    </body>
-</html>
+<PageLayout title='Uses'>
+	<h1>Uses</h1>
+	<p>This page is just a small overview of the software/products I use on a daily/frequent basis.</p>
+</PageLayout>

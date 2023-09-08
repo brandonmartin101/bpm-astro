@@ -1,40 +1,33 @@
 ---
-import '../styles/reset.css';
-import '../styles/global.css';
-import Helmet from '../components/Helmet.astro';
+import PageLayout from '../layouts/PageLayout.astro';
 
 import * as react from '../components/ReactCounter';
 import { PreactCounter } from '../components/PreactCounter';
 import SolidCounter from '../components/SolidCounter';
-
 import VueCounter from '../components/VueCounter.vue';
 import SvelteCounter from '../components/SvelteCounter.svelte';
 ---
 
-<html lang="en">
-	<Helmet />
-	<body>
-		<main>
-            <h1>Misc page to hold any code snippets I just need to throw somewhere</h1>
-			<react.Counter client:visible>
-				<h1>Hello from React!</h1>
-			</react.Counter>
+<PageLayout title='Misc'>
+	<h1>Misc</h1>
+	<p>Misc page to hold any code snippets I just need to throw somewhere</p>
+	<react.Counter client:visible>
+		<h1>Hello from React!</h1>
+	</react.Counter>
 
-			<PreactCounter client:visible>
-				<h1>Hello from Preact!</h1>
-			</PreactCounter>
+	<PreactCounter client:visible>
+		<h1>Hello from Preact!</h1>
+	</PreactCounter>
 
-			<SolidCounter client:visible>
-				<h1>Hello from Solid!</h1>
-			</SolidCounter>
+	<SolidCounter client:visible>
+		<h1>Hello from Solid!</h1>
+	</SolidCounter>
 
-			<VueCounter client:visible>
-				<h1>Hello from Vue!</h1>
-			</VueCounter>
+	<VueCounter client:visible>
+		<h1>Hello from Vue!</h1>
+	</VueCounter>
 
-			<SvelteCounter client:visible>
-				<h1>Hello from Svelte!</h1>
-			</SvelteCounter>
-		</main>
-	</body>
-</html>
+	<SvelteCounter client:visible>
+		<h1>Hello from Svelte!</h1>
+	</SvelteCounter>
+</PageLayout>

@@ -1,0 +1,16 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import SitemapLinks from '../components/SitemapLinks.astro';
+---
+
+<PageLayout title='Sitemap'>
+	<h1>Sitemap</h1>
+	<h2 class='h5'>Just all the links on the site, in case you get lost.</h2>
+	<SitemapLinks />
+</PageLayout>
+
+<style>
+	.h5 {
+		margin: 10px 0 50px;
+	}
+</style>

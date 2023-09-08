@@ -4,9 +4,10 @@ import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import vue from '@astrojs/vue';
 import solid from '@astrojs/solid-js';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	// Enable many frameworks to support all different kinds of components.
-	integrations: [preact(), react(), svelte(), vue(), solid()],
+	site: 'https://brandonmartin.dev',
+	integrations: [preact(), react(), svelte(), vue(), solid(), sitemap()],
 });
