@@ -21,6 +21,7 @@
     "cssnano": "^6.0.1"
   },
   "dependencies": {
+    "@astrojs/netlify": "^3.0.1",
     "@astrojs/sitemap": "^3.0.0",
     "preact": "^10.17.1",
     "react": "^18.2.0",

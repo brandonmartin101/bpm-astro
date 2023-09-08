@@ -6,8 +6,12 @@ import vue from '@astrojs/vue';
 import solid from '@astrojs/solid-js';
 import sitemap from '@astrojs/sitemap';
 
+import netlify from "@astrojs/netlify/functions";
+
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://brandonmartin.dev',
-	integrations: [preact(), react(), svelte(), vue(), solid(), sitemap()],
+  site: 'https://brandonmartin.dev',
+  integrations: [preact(), react(), svelte(), vue(), solid(), sitemap()],
+  output: "server",
+  adapter: netlify()
 });
