@@ -2,7 +2,6 @@
 import PageLayout from '../layouts/PageLayout.astro';
 
 import * as react from '../components/ReactCounter';
-import { PreactCounter } from '../components/PreactCounter';
 import SolidCounter from '../components/SolidCounter';
 import VueCounter from '../components/VueCounter.vue';
 import SvelteCounter from '../components/SvelteCounter.svelte';
@@ -14,10 +13,6 @@ import SvelteCounter from '../components/SvelteCounter.svelte';
 	<react.Counter client:visible>
 		<h1>Hello from React!</h1>
 	</react.Counter>
-
-	<PreactCounter client:visible>
-		<h1>Hello from Preact!</h1>
-	</PreactCounter>
 
 	<SolidCounter client:visible>
 		<h1>Hello from Solid!</h1>

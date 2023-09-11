@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import preact from '@astrojs/preact';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import vue from '@astrojs/vue';
@@ -11,7 +10,7 @@ import netlify from "@astrojs/netlify/functions";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://brandonmartin.dev',
-  integrations: [preact(), react(), svelte(), vue(), solid(), sitemap()],
+  integrations: [react(), svelte(), vue(), solid(), sitemap()],
   output: "server",
   adapter: netlify()
 });
