@@ -18,6 +18,7 @@
     "@astrojs/vue": "^3.0.0",
     "@dicebear/core": "^7.0.1",
     "@dicebear/pixel-art": "^7.0.1",
+    "@resvg/resvg-js": "^2.4.1",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "astro": "^3.0.12",
