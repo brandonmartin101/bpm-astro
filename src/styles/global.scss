@@ -1,12 +1,13 @@
-@import 'reset';
+@use 'reset';
+@use 'config';
 
 html,
 body {
 	font-family: system-ui;
 	margin: 0;
 	text-align: center;
-	color: #111;
-	background-color: #fff;
+	color: config.$color;
+	background-color: config.$background;
 }
 html {
 	height: 100%;
@@ -42,12 +43,14 @@ h6,
 .h6 {
 	font-size: 1.1rem;
 }
-a,
-a:visited,
-a:hover,
-a:focus {
-	color: green;
-	text-decoration: none;
+a {
+    &,
+	&:visited,
+	&:hover,
+	&:focus {
+		color: config.$special;
+		text-decoration: none;
+	}
 }
 
 .body-container {
@@ -105,15 +108,15 @@ a:focus {
 }
 .socials .social-icon {
 	margin: 0 1rem;
-	color: #111;
+	color: config.$color;
 	transition: 0.3s;
 }
 .socials .social-icon:hover {
-	color: green;
+	color: config.$special;
 }
 
 .special {
-	color: green;
+	color: config.$special;
 }
 
 .counter {
@@ -126,9 +129,4 @@ a:focus {
 
 .counter-message {
 	text-align: center;
-}
-
-.white,
-a.white {
-	color: #fff;
 }

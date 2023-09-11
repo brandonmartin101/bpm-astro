@@ -22,10 +22,8 @@
   "dependencies": {
     "@astrojs/netlify": "^3.0.1",
     "@astrojs/sitemap": "^3.0.0",
-    "@dicebear/collection": "^7.0.1",
     "@dicebear/core": "^7.0.1",
     "@dicebear/pixel-art": "^7.0.1",
-    "@resvg/resvg-js": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.66.1",
