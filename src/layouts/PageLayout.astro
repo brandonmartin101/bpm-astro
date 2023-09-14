@@ -25,7 +25,8 @@ const logo = await fetch('https:' + logoAPI)
 	.then((response) => response.text())
 	.then((data) => {
 		return parse(data);
-	});
+	})
+	.catch(e => console.log(e));
 ---
 
 <html lang='en'>
