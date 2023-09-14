@@ -1,35 +1,15 @@
 ---
-// import { createAvatar } from '@dicebear/core';
-// import * as pixelArt from '@dicebear/pixel-art';
-
-// const avatar = createAvatar(pixelArt, {
-// 	seed: Math.random().toString(36),
-// 	randomizeIds: true,
-// 	beard: ['variant01'],
-// 	beardProbability: 100,
-// 	skinColor: ['eac393'],
-// 	clothing: ['variant01', 'variant02', 'variant03', 'variant04', 'variant05', 'variant06'],
-// 	eyesColor: ['0ff'],
-// 	hair: ['short04', 'short07', 'short18'],
-// 	hairColor: ['83623b', '603015', '612616'],
-// 	accessoriesProbability: 0,
-// 	hatProbability: 0,
-// 	glassesProbability: 0,
-// });
-
-const logoSeed = Math.random() * Math.random();
-const logo = `//avatars.dicebear.com/api/pixel-art/${logoSeed}.svg?beard=variant01&beardProbability=100&hairProbability=0&accessoriesProbability=0&hatProbability=0&skinColor=variant02`;
-
+const {logo} = Astro.props;
 const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js`;
 ---
 
 <header class='header'>
 	<div class='logo-wrapper'>
 		<a href='/' class='nav-link'>
-			<!-- <div class='logo'>
-				{avatar}
-			</div> -->
-			<img class='logo' src={logo} alt='Brandon Martin' />
+			<div class='logo'>
+				{logo}
+			</div>
+			<!-- <img class='logo' src={logo} alt='Brandon Martin' /> -->
 			<p class='white'>Brandon Martin</p>
 		</a>
 	</div>
