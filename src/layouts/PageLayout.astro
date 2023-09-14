@@ -6,15 +6,16 @@ import Footer from '../components/Footer.astro';
 
 const { title } = Astro.props;
 
-const logoSeed = Math.floor(Math.random()*20);
+const logoSeed = Math.floor(Math.random() * 20);
 const logo = `/avatars/avatar-${logoSeed}.svg`;
 ---
+
 <html lang='en'>
 	<Helmet title={`Brandon Martin | ${title}`} favicon={logo} />
 	<body>
 		<div class='body-container'>
 			<Header logo={logo} />
-			<main class='main'>
+			<main class='main' transition:name='main' transition:animate='fade'>
 				<slot />
 			</main>
 			<Footer />

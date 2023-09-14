@@ -8,12 +8,12 @@ export function Counter({ children }) {
 
 	return (
 		<>
-			<div className="counter">
+			<div className='counter'>
 				<button onClick={subtract}>-</button>
 				<pre>{count}</pre>
 				<button onClick={add}>+</button>
 			</div>
-			<div className="counter-message">{children}</div>
+			<div className='counter-message'>{children}</div>
 		</>
 	);
 }

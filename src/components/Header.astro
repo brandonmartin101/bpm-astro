@@ -1,9 +1,9 @@
 ---
-const {logo} = Astro.props;
+const { logo } = Astro.props;
 const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js`;
 ---
 
-<header class='header'>
+<header class='header' transition:persist>
 	<div class='logo-wrapper'>
 		<a href='/' class='nav-link'>
 			<img class='logo' src={logo} alt='Brandon Martin' />
@@ -12,9 +12,10 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 	</div>
 	<nav class='navigation'>
 		<ul>
-			<li><a href='/about' class='nav-link white'>/about</a></li>
-			<li><a href='/uses' class='nav-link white'>/uses</a></li>
-			<li><a href='/now' class='nav-link white'>/now</a></li>
+			<li><a href='/about' class='nav-link'>/about</a></li>
+			<li><a href='/projects' class='nav-link'>/projects</a></li>
+			<li><a href='/uses' class='nav-link'>/uses</a></li>
+			<li><a href='/now' class='nav-link'>/now</a></li>
 		</ul>
 	</nav>
 	<canvas class='background'></canvas>
@@ -31,7 +32,7 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 	}
 	ul {
 		display: inline-block;
-		column-count: 3;
+		column-count: 4;
 	}
 	li {
 		list-style-type: none;
@@ -50,7 +51,8 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 		overflow: hidden;
 		position: relative;
 	}
-	.logo-wrapper, .navigation {
+	.logo-wrapper,
+	.navigation {
 		z-index: 1;
 	}
 	.logo {

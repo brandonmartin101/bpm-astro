@@ -10,12 +10,12 @@ export default function SolidCounter({ children }) {
 
 	return (
 		<>
-			<div id="solid" class="counter">
+			<div id='solid' class='counter'>
 				<button onClick={subtract}>-</button>
 				<pre>{count()}</pre>
 				<button onClick={add}>+</button>
 			</div>
-			<div class="counter-message">{children}</div>
+			<div class='counter-message'>{children}</div>
 		</>
 	);
 }
