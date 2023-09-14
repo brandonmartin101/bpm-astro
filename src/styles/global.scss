@@ -3,7 +3,7 @@
 
 html,
 body {
-	font-family: system-ui;
+	font-family: config.$font;
 	margin: 0;
 	text-align: center;
 	color: config.$color;

@@ -3,34 +3,14 @@ import '../styles/global.scss';
 import Helmet from '../components/Helmet.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { parse } from 'node-html-parser';
 
 const { title } = Astro.props;
 
-const logoSeed = Math.random();
-const logoAPI = `//api.dicebear.com/5.x/pixel-art/svg
-	?seed=${logoSeed}
-	&randomizeIds=true
-	&beard=variant01
-	&beardProbability=100
-	&skinColor=eac393
-	&clothing=variant01,variant02,variant03,variant04,variant05,variant06
-	&eyesColor=00ffff
-	&hair=short04,short07
-	&hairColor=83623b,603015,612616
-	&accessoriesProbability=0
-	&hatProbability=0
-	&glassesProbability=0`;
-const logo = await fetch('https:' + logoAPI)
-	.then((response) => response.text())
-	.then((data) => {
-		return parse(data);
-	})
-	.catch(e => console.log(e));
+const logoSeed = Math.floor(Math.random()*20);
+const logo = `/avatars/avatar-${logoSeed}.svg`;
 ---
-
 <html lang='en'>
-	<Helmet title={`Brandon Martin | ${title}`} favicon={logoAPI} />
+	<Helmet title={`Brandon Martin | ${title}`} favicon={logo} />
 	<body>
 		<div class='body-container'>
 			<Header logo={logo} />
