@@ -1,132 +1,133 @@
-@use 'reset';
-@use 'config';
+@use "reset";
+@use "config";
 
 html,
 body {
-	font-family: config.$font;
-	margin: 0;
-	text-align: center;
-	color: config.$color;
-	background-color: config.$background;
+  font-family: config.$font-family;
+  font-size: config.$font-size;
+  margin: 0;
+  text-align: center;
+  color: config.$color;
+  background-color: config.$background;
 }
 html {
-	height: 100%;
+  height: 100%;
 }
 body {
-	min-height: 100%;
+  min-height: 100%;
 }
 header,
 footer {
-	width: 100%;
+  width: 100%;
 }
 h1,
 .h1 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 h2,
 .h2 {
-	font-size: 1.7rem;
+  font-size: 1.7rem;
 }
 h3,
 .h3 {
-	font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 h4,
 .h4 {
-	font-size: 1.3rem;
+  font-size: 1.3rem;
 }
 h5,
 .h5 {
-	font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 h6,
 .h6 {
-	font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 a {
-    &,
-	&:visited,
-	&:hover,
-	&:focus {
-		color: config.$special;
-		text-decoration: none;
-	}
+  &,
+  &:visited,
+  &:hover,
+  &:focus {
+    color: config.$special;
+    text-decoration: none;
+  }
 }
 
 .body-container {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .body-container {
-	display: flex;
-	justify-content: center;
-	align-content: center;
-	flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 .main,
 .footer {
-	padding: 0.5rem;
-	display: flex;
+  padding: 0.5rem;
+  display: flex;
 }
 .main {
-	flex: 1;
-	justify-content: center;
-	align-content: center;
-	flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 
 .footer {
-	font-size: 0.8rem;
-	flex-direction: row;
-	align-content: center;
-	justify-content: center;
-	border-top: 1px solid #ccc;
+  font-size: 0.8rem;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  border-top: 1px solid #ccc;
 }
 .footer button {
-	color: transparent;
-	background: transparent;
-	border: none;
-	font-size: 0;
-	width: 20px;
-	height: 20px;
+  color: transparent;
+  background: transparent;
+  border: none;
+  font-size: 0;
+  width: 20px;
+  height: 20px;
 }
 .footer button:hover {
-	color: black;
+  color: black;
 }
 .footer .theme-switcher,
 .footer .night-switcher {
-	flex: 0;
+  flex: 0;
 }
 .footer .tools-attribution {
-	flex: 1 1;
+  flex: 1 1;
 }
 
 .socials {
-	display: flex;
-	margin: 3rem auto;
+  display: flex;
+  margin: 3rem auto;
 }
 .socials .social-icon {
-	margin: 0 1rem;
-	color: config.$color;
-	transition: 0.3s;
+  margin: 0 1rem;
+  color: config.$color;
+  transition: 0.3s;
 }
 .socials .social-icon:hover {
-	color: config.$special;
+  color: config.$special;
 }
 
 .special {
-	color: config.$special;
+  color: config.$special;
 }
 
 .counter {
-	display: grid;
-	font-size: 2em;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	margin-top: 2em;
-	place-items: center;
+  display: grid;
+  font-size: 2em;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2em;
+  place-items: center;
 }
 
 .counter-message {
-	text-align: center;
+  text-align: center;
 }

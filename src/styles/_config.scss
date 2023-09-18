@@ -1,5 +1,17 @@
+@font-face {
+  font-family: "Roboto Slab";
+  src: url(/fonts/RobotoSlab-Variable.ttf);
+  font-stretch: 25% 150%;
+  font-style: oblique 0deg 10deg;
+  font-weight: 100 700;
+  font-display: swap;
+}
+
 $color: #111;
 $background: #fff;
 $special: green;
 
-$font: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+$font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, avenir next,
+  avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,
+  arial, sans-serif;
+$font-size: 18px;
