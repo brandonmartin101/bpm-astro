@@ -1,0 +1,32 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro'
+---
+
+<PageLayout title='Space Game'>
+  <h1>Space Game</h1>
+  <p>
+    You are a spaceship flying through an asteroid field. Survive as long as possible. Use
+    up+down+left+right keys on your keyboard to evade asteroids as long as possible. Your high score
+    will be recorded upon death.
+  </p>
+  <canvas id='game-canvas'></canvas>
+  <script src='./game.js'></script>
+</PageLayout>
+
+<style>
+  p {
+    max-width: 500px;
+    margin: 0 auto 20px;
+  }
+  canvas {
+    border: 1px solid #222;
+    background: #222;
+    background: url('assets/stars.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 30px auto 0;
+    box-shadow: 0 0 15px black;
+    width: 100%;
+    max-width: 1000px;
+  }
+</style>
