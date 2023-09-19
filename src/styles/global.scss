@@ -1,24 +1,19 @@
-@use "reset";
-@use "config";
+@use 'reset';
+@use 'config';
 
 html,
 body {
   font-family: config.$font-family;
   font-size: config.$font-size;
-  margin: 0;
-  text-align: center;
   color: config.$color;
   background-color: config.$background;
-}
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-}
-header,
-footer {
-  width: 100%;
+  margin: 0;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 h1,
 .h1 {
@@ -54,16 +49,9 @@ a {
   }
 }
 
-.body-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.body-container {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
+.header,
+.footer {
+  width: 100%;
 }
 .main,
 .footer {
@@ -72,9 +60,11 @@ a {
 }
 .main {
   flex: 1;
-  justify-content: center;
+  overflow: auto;
+  justify-content: flex-start;
   align-content: center;
   flex-direction: column;
+  padding-top: 50px;
 }
 
 .footer {
