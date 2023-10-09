@@ -1,27 +1,29 @@
 ---
-
+// get all site links
+let sitemapLinks = ['', 'about', 'uses', 'now', 'projects']
 ---
 
 <ul class='sitemap'>
-	<li><a href='/'>Home</a></li>
-	<li><a href='/about'>/About</a></li>
-	<li><a href='/uses'>/Uses</a></li>
-	<li><a href='/now'>/Now</a></li>
-	<li><a href='/misc'>/Misc</a></li>
-	<li><a href='/solera'>/Solera</a></li>
+  {
+    sitemapLinks.map((sitemapLink) => (
+      <li>
+        <a href={'/' + sitemapLink}>/{sitemapLink}</a>
+      </li>
+    ))
+  }
 </ul>
 
 <style>
-	ul {
-		width: 100%;
-		max-width: 500px;
-		list-style-type: none;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		margin: 0 auto;
-	}
-	li {
-		margin: 0 20px;
-	}
+  ul {
+    width: 100%;
+    max-width: 500px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+  li {
+    margin: 0 20px;
+  }
 </style>
