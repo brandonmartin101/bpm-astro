@@ -1,0 +1,43 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import * as MUI from '@mui/material'
+// console.log(MUI)
+let arrayMUI = []
+let arrayMUI2 = []
+for (const comp in MUI) {
+  arrayMUI.push(comp)
+}
+---
+
+<PageLayout title='MUI Reference'>
+  <h1>MUI Reference</h1>
+  <p>Display of MUI components, just for my personal reference.</p>
+  <a href='https://mui.com/material-ui/getting-started/' target='_blank'>MUI Docs</a>
+  <div class='buttons'>
+    <MUI.Button variant='text'>Button</MUI.Button>
+    <MUI.Button variant='contained'>Button</MUI.Button>
+    <MUI.Button variant='outlined'>Button</MUI.Button>
+    <MUI.Button variant='outlined' disabled>Disabled</MUI.Button>
+    <MUI.Button variant='contained' href='#'>Link</MUI.Button>
+    <MUI.ButtonBase>Button Base</MUI.ButtonBase>
+  </div>
+  <div class='dump'>
+    {
+      arrayMUI.map((Item) => {
+        if (Item[0] < 'a') return <Item>{Item}</Item>
+      })
+    }
+  </div>
+</PageLayout>
+
+<style>
+  *:not(h1) {
+    margin: 10px;
+  }
+  .dump {
+    max-width: 100%;
+  }
+  .dump > * {
+    display: inline-block;
+  }
+</style>

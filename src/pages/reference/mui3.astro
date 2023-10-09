@@ -1,0 +1,19 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro'
+import * as MUI from '@mui/material-next'
+---
+
+<PageLayout title='MUI Reference'>
+  <h1>MUI (Material You) Reference</h1>
+  <p>Display of MUI components, just for my personal reference.</p>
+  <a href='https://mui.com/material-ui/getting-started/' target='_blank'>MUI Docs</a>
+  <div class='buttons'>
+    <MUI.Button variant='text'>Button</MUI.Button>
+  </div>
+</PageLayout>
+
+<style>
+  *:not(h1) {
+    margin: 10px;
+  }
+</style>
