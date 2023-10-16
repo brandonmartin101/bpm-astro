@@ -2,4 +2,74 @@
 import PageLayout from '../../../layouts/PageLayout.astro'
 ---
 
-<PageLayout title='Space Game' />
+<PageLayout title='Tic-Tac-Toe Game'>
+  <h1>Tic-Tac-Toe</h1>
+  <div class='game-controls'>
+    <div class='board-size-control hidden'>
+      <label for='board-size'>Board size:</label>
+      <input type='text' class='board-size' id='board-size' value='3' disabled />
+    </div>
+    <div class='win-number-control hidden'>
+      <label for='win-number'># in a row to win:</label>
+      <input type='text' class='win-number' id='win-number' value='3' disabled />
+    </div>
+    <div class='player-char-control hidden'>
+      <label for='player-char'>Player symbol (X goes first):</label>
+      <input type='text' class='player-char' id='player-char' value='X' disabled />
+    </div>
+    <button id='launch-game'>Reset Game</button>
+  </div>
+  <div class='board' id='board'></div>
+  <script src='./game.js'></script>
+</PageLayout>
+
+<style is:inline>
+  label {
+    display: block;
+  }
+  input,
+  button {
+    max-width: 150px;
+    margin: 0 auto 10px;
+    text-align: center;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    margin: 30px auto 0;
+    position: relative;
+  }
+  .cell {
+    width: 100px;
+    height: 100px;
+    font-size: 400%;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+
+  #result {
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    width: 100%;
+    bottom: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      #fff0 0%,
+      #fff0 40%,
+      #222f 40%,
+      #222f 42%,
+      #ffff 42%,
+      #ffff 58%,
+      #222f 58%,
+      #222f 60%,
+      #fff0 60%,
+      #fff0 100%
+    );
+    padding-top: calc(50% - 15px);
+  }
+</style>
