@@ -1,9 +1,61 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro'
+import * as example from './example.md'
 ---
 
-<PageLayout title='Now'>
+<PageLayout
+  title='Now'
+  addScript='https://cdn.jsdelivr.net/npm/markdown-it@13.0.2/dist/markdown-it.min.js'>
   <h1>Markdown Editor</h1>
-  
+  <div class='md-wrap'>
+    <div class='md-input'>
+      <textarea name='md-text-input' id='md-text-input' class='md-text-input'
+        >{example.rawContent}</textarea
+      >
+    </div>
+    <div class='md-output' id='md-output'></div>
+  </div>
 </PageLayout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const md = window.markdownit()
+    const mdInput = document.querySelector('#md-text-input')
+    const mdOutput = document.querySelector('#md-output')
+
+    const mdUpdate = () => {
+      const markdownText = mdInput.value
+      const htmlText = md.render(markdownText)
+      mdOutput.innerHTML = htmlText
+    }
+
+    mdInput.addEventListener('input', mdUpdate)
+    mdUpdate()
+  })
+</script>
+
+<style>
+  .md-wrap {
+    display: flex;
+  }
+  .md-input,
+  .md-output {
+    flex-grow: 1;
+    max-width: 50%;
+    padding: 10px 20px;
+  }
+  .md-input > *,
+  .md-output > * {
+    width: 100%;
+  }
+  .md-text-input,
+  .md-output {
+    overflow-y: scroll;
+  }
+  .md-text-input {
+    height: 50vh;
+  }
+  .md-output {
+    text-align: left;
+  }
+</style>

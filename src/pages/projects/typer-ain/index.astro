@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro'
+---
+
+<PageLayout title='Typer Ain'>
+  <h1>Typer Ain</h1>
+  <p>You are Ain. Letters fall from the sky. Type the letters to block the rain, Ain.</p>
+  <button type='button' id='ain-start'>Start Game</button>
+  <canvas id='ain-game' width='1000' height='500'></canvas>
+  <div id='ain-score'>
+    <span id='ain-current-score'>Current Score: <span id='ain-current-score-value'></span></span> |
+    <span id='ain-high-score'>High Score: <span id='ain-high-score-value'></span></span> |
+    <span id='ain-speed'>Speed: <span id='ain-speed-value'></span></span>
+  </div>
+  <script src='./typer-ain.js'></script>
+</PageLayout>
+
+<style>
+  button {
+    max-width: 200px;
+    margin: 20px auto;
+  }
+  canvas {
+    border: 1px solid #222;
+    width: 1000px;
+    aspect-ratio: 2 / 1;
+    margin: 0 auto;
+  }
+</style>
