@@ -1,3 +1,4 @@
+//* Init
 let ain = {
   // DOM sections
   gameArea: document.querySelector('#ain-game'),
@@ -5,12 +6,7 @@ let ain = {
     currentScore: document.querySelector('#ain-current-score'),
     highScore: document.querySelector('#ain-high-score'),
   },
-
-  // game variables
-  currentScore: 0,
-  highScore: localStorage.getItem('highScore') || 0,
-  chars: [], // [{ letter:'a', x:0, y:0 },...]
-  deadChars: [],
+  highScore: localStorage.getItem('ainHighScore') || 0,
 
   // game functions
   getRandomChar: (special) => {
@@ -26,6 +22,9 @@ let ain = {
     return Math.floor(Math.random() * (ain.gameArea.width - 20) + 10)
   },
 }
+
+ain.scoreArea.currentScore.textContent = `CurrentScore: ${ain.currentScore}`
+ain.scoreArea.highScore.textContent = `High Score: ${ain.highScore}`
 
 //* Main loop once the game starts
 const ainLoop = () => {
@@ -81,7 +80,7 @@ const ainLoop = () => {
   ain.scoreArea.currentScore.textContent = `CurrentScore: ${ain.currentScore}`
   ain.scoreArea.highScore.textContent = `High Score: ${ain.highScore}`
 
-  requestAnimationFrame(ainLoop)
+  ain.animationFrame = requestAnimationFrame(ainLoop)
 }
 
 //* Event Listeners
@@ -105,8 +104,12 @@ document.addEventListener('keypress', (e) => {
   }
 })
 document.querySelector('#ain-start').addEventListener('click', (e) => {
-  e.target.toggleAttribute('disabled')
+  e.target.textContent = 'Restart'
+  e.target.blur()
+  cancelAnimationFrame(ain.animationFrame)
   ain.currentScore = 0
   ain.charSpawnRate = 0.03
+  ain.chars = [] // [{ letter:'a', x:0, y:0 },...]
+  ain.deadChars = []
   ainLoop()
 })
