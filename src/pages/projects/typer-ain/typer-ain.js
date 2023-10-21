@@ -5,6 +5,7 @@ let ain = {
   scoreArea: {
     currentScore: document.querySelector('#ain-current-score'),
     highScore: document.querySelector('#ain-high-score'),
+    spawnRate: document.querySelector('#ain-spawn-rate'),
   },
   highScore: localStorage.getItem('ainHighScore') || 0,
 
@@ -23,17 +24,19 @@ let ain = {
   },
 }
 
-ain.scoreArea.currentScore.textContent = `CurrentScore: ${ain.currentScore}`
+ain.scoreArea.currentScore.textContent = `CurrentScore: 0`
 ain.scoreArea.highScore.textContent = `High Score: ${ain.highScore}`
+ain.scoreArea.spawnRate.textContent = `Spawn Rate: 1.8/second`
 
 //* Main loop once the game starts
 const ainLoop = () => {
   const ctx = ain.gameArea.getContext('2d')
   ctx.clearRect(0, 0, ain.gameArea.width, ain.gameArea.height)
-  ctx.font = '18px monospace'
+  ctx.font = '24px monospace'
 
   // generate char
   ain.charSpawnRate = 0.03 + ain.currentScore * 0.0005
+  ain.scoreArea.spawnRate.textContent = `Spawn Rate: ${(ain.charSpawnRate * 60).toFixed(2)}/second`
   if (Math.random() < ain.charSpawnRate) {
     const newChar = {
       letter: ain.getRandomChar(),
@@ -60,6 +63,7 @@ const ainLoop = () => {
 
   ain.deadChars.forEach((char, index) => {
     char.y -= 1
+    char.letter = ain.getRandomChar(true)
     if (char.y < 0) {
       ain.deadChars.splice(index, 1)
     }
