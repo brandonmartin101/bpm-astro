@@ -1,0 +1,36 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro'
+---
+
+<PageLayout title="Drawing Pad">
+  <h1>Drawing Pad</h1>
+  <canvas class="drawing-pad">
+    Canvas goes here. If you're seeing this, you are using an older browser. Try in Firefox or Chrome for better
+    results.
+  </canvas>
+  <button class="reset" id="reset-button">Reset Canvas</button>
+  <script src="./drawing-pad.js"></script>
+</PageLayout>
+
+<style>
+  .drawing-pad {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    /* border: 1px solid #222;
+    box-shadow: 0 0 0 1px #222; */
+    width: 100%;
+    /* max-width: 800px; */
+    height: 100%;
+    /* max-height: 500px; */
+    margin: 20px auto;
+    cursor: crosshair;
+  }
+
+  .reset {
+    background: #ededed;
+    width: 150px;
+    margin: 0 auto;
+    z-index: 1;
+  }
+</style>
