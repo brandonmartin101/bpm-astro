@@ -2,21 +2,24 @@
 import PageLayout from '../../layouts/PageLayout.astro'
 ---
 
-<PageLayout title='Now'>
+<PageLayout title="Now">
   <h1>Projects</h1>
-  <p>Collection of projects I've worked on.</p>
-  <section class='games'>
+  <p>Collection of projects I"ve worked on.</p>
+  <section class="games">
     <h2>Tools</h2>
-    <a href='./projects/to-do-list'>/to-do-list</a>
-    <a href='./projects/markdown-editor'>/markdown-editor</a>
+    <a href="./projects/to-do-list" hidden>/to-do-list</a>
+    <a href="./projects/kanban-board" hidden>/kanban-board</a>
+    <a href="./projects/markdown-editor">/markdown-editor</a>
+    <a href="./projects/drum-machine">/drum-machine</a>
+    <a href="./projects/image-modifier" hidden>/image-modifier</a>
     <h2>Games</h2>
-    <a href='./projects/space-game'>/space-game</a>
-    <a href='./projects/ro-sham-bo'>/ro-sham-bo</a>
-    <a href='./projects/runner'>/runner</a>
-    <a href='./projects/tic-tac-toe'>/tic-tac-toe</a>
-    <a href='./projects/blackjack'>/blackjack</a>
-    <a href='./projects/typer-ain'>/typer-ain</a>
-    <a href='./projects/memory'>/memory</a>
+    <a href="./projects/space-game">/space-game</a>
+    <a href="./projects/ro-sham-bo" hidden>/ro-sham-bo</a>
+    <a href="./projects/runner" hidden>/runner</a>
+    <a href="./projects/tic-tac-toe">/tic-tac-toe</a>
+    <a href="./projects/blackjack" hidden>/blackjack</a>
+    <a href="./projects/typer-ain">/typer-ain</a>
+    <a href="./projects/memory">/memory</a>
   </section>
 </PageLayout>
 
@@ -27,7 +30,7 @@ import PageLayout from '../../layouts/PageLayout.astro'
   }
   a {
     margin: 5px 20px;
-    display: inline-block;
+    /* display: inline-block; */
   }
   a:hover {
     text-decoration: underline;
