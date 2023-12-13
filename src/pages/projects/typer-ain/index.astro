@@ -5,13 +5,28 @@ import PageLayout from '../../../layouts/PageLayout.astro'
 <PageLayout title='Typer Ain'>
   <h1>Typer Ain</h1>
   <p>You are Ain. Letters fall from the sky. Type the letters to block the rain, Ain.</p>
-  <button type='button' id='ain-start'>Start Game</button>
-  <canvas id='ain-game' width='1000' height='500'></canvas>
-  <div id='ain-score'>
-    <span id='ain-current-score'>Current Score: <span id='ain-current-score-value'></span></span> |
-    <span id='ain-high-score'>High Score: <span id='ain-high-score-value'></span></span> |
+  <div class="buttons-wrap">
+    <button type="button" id="rain-mute" class="audio-button rain"><img src="/images/droplet-slash.svg"
+        id="rain-mute-img" alt="Mute Rain" /></button>
+    <button type="button" id="ain-start">Start Game</button>
+    <button type="button" id="sfx-mute" class="audio-button sfx"><img src="/images/volume-off.svg" id="sfx-mute-img"
+        alt="Mute SFX" /></button>
   </div>
-  <script src='./typer-ain.js'></script>
+  <canvas id="ain-game" width="1000" height="500"></canvas>
+  <div id="ain-score">
+    <div id="ain-current-score">Current Score: 0</div>
+    <div id="ain-high-score">High Score: 0</div>
+    <div id="ain-spawn-rate">Spawn Rate: 1.8/second</div>
+  </div>
+  <p class="ain-citations">Audio from:<br>
+    <cite><a href="https://soundbible.com/1908-2-Minute-Storm.html" target="_blank"
+        rel="noreferrer">https://soundbible.com/1908-2-Minute-Storm.html</a></cite><br>
+    <cite><a href="https://soundbible.com/2181-Dial-Tone-American.html" target="_blank"
+        rel="noreferrer">https://soundbible.com/2181-Dial-Tone-American.html</a></cite><br>
+    <cite><a href="https://soundbible.com/2154-Text-Message-Alert-1.html" target="_blank"
+        rel="noreferrer">https://soundbible.com/2154-Text-Message-Alert-1.html</a></cite><br>
+  </p>
+  <script src="./typer-ain.js"></script>
 </PageLayout>
 
 <style>
@@ -24,5 +39,30 @@ import PageLayout from '../../../layouts/PageLayout.astro'
     width: 1000px;
     aspect-ratio: 2 / 1;
     margin: 0 auto;
+  }
+
+  .audio-button {
+    margin: 0 20px;
+    border: none;
+    width: 50px;
+    background: none;
+    position: relative;
+    top: 8px;
+  }
+  .audio-button img {
+    height: 30px;
+  }
+  .audio-button.rain img {
+    margin: 0 auto;
+  }
+
+  .attribution {
+    font-size: 70%;
+    max-width: 400px;
+    margin: 40px auto 0;
+    text-align: center;
+  }
+  .attribution a {
+    white-space: nowrap;
   }
 </style>
