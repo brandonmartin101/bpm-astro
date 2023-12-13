@@ -37,7 +37,7 @@ horizontal rule
 
 [A link that goes somewhere](https://www.example.com/)
 
-![alt text](image.jpg)
+![alt text](image link)
 
 | Syntax    | Description |
 | --------- | ----------- |
