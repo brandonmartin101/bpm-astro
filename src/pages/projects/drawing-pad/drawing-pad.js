@@ -1,3 +1,5 @@
+//TODO add ability to change brush type
+
 const canvas = document.querySelector('.drawing-pad');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;

@@ -1,0 +1,304 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro'
+---
+
+<PageLayout title="Image Filter">
+  <h1>Image Filters</h1>
+
+    <div class="controls-wrap">
+      <form>
+
+        <fieldset>
+          <label for="radio-img">Image:</label>
+          <input type="radio" name="radio-img" id="radio-img-1" class="radio-img" checked="checked" onclick="changeImg(1);" />
+          <label for="radio-img-1">City</label>
+          <input type="radio" name="radio-img" id="radio-img-2" class="radio-img" onclick="changeImg(2);" />
+          <label for="radio-img-2">Ocean</label>
+          <input type="radio" name="radio-img" id="radio-img-3" class="radio-img" onclick="changeImg(3);" />
+          <label for="radio-img-3">Forest</label>
+          <input type="radio" name="radio-img" id="radio-img-4" class="radio-img" onclick="changeImg(4);" />
+          <label for="radio-img-4">Desert</label>
+        </fieldset>
+
+        <fieldset>
+          <label for="blur-slider">Blur:</label>
+          <input type="range" name="blur-slider" id="blur-slider" min="0" max="50" value="0" step="1" oninput="updateFilters(value + 'px', 'blur');" />
+          <output for="blur-slider" id="blur-output">0</output>
+        </fieldset>
+
+        <fieldset>
+          <label for="brightness-slider">Brightness:</label>
+          <input type="range" name="brightness-slider" id="brightness-slider" min="0" max="300" value="100" step="1"
+            oninput="updateFilters(value + '%', 'brightness');" />
+          <output for="brightness-slider" id="brightness-output">100</output>
+        </fieldset>
+
+        <fieldset>
+          <label for="contrast-slider">Contrast:</label>
+          <input type="range" name="contrast-slider" id="contrast-slider" min="0" max="300" value="100" step="1"
+            oninput="updateFilters(value + '%', 'contrast');" />
+          <output for="contrast-slider" id="contrast-output">100</output>
+        </fieldset>
+
+        <fieldset>
+          <label for="grayscale-slider">Grayscale:</label>
+          <input type="range" name="grayscale-slider" id="grayscale-slider" min="0" max="100" value="0" step="1"
+            oninput="updateFilters(value + '%', 'grayscale');" />
+          <output for="grayscale-slider" id="grayscale-output">0</output>
+        </fieldset>
+
+        <fieldset>
+          <label for="hue-rotate-slider">Hue Rotate:</label>
+          <input type="range" name="hue-rotate-slider" id="hue-rotate-slider" min="0" max="360" value="0" step="1"
+            oninput="updateFilters(value + 'deg', 'hue-rotate');" />
+          <output for="hue-rotate-slider" id="hue-rotate-output">0</output>
+          <span>deg</span>
+        </fieldset>
+
+        <fieldset>
+          <label for="invert-slider">Invert:</label>
+          <input type="range" name="invert-slider" id="invert-slider" min="0" max="100" value="0" step="1" oninput="updateFilters(value + '%', 'invert');" />
+          <output for="invert-slider" id="invert-output">0</output>
+        </fieldset>
+
+        <fieldset id="drop-shadow">
+          <label for="drop-shadow-slider" class="uline">Drop Shadow</label>
+          <br>
+          <label for="drop-shadow-horiz-slider">Horizontal:</label>
+          <input type="range" name="drop-shadow-horiz-slider" id="drop-shadow-horiz-slider" min="-50" max="50" value="0"
+            step="1" oninput="updateFilters(value + 'px', 'drop-shadow-horiz');" />
+          <output for="drop-shadow-horiz-slider" id="drop-shadow-horiz-output">50</output>
+          <br>
+          <label for="drop-shadow-vert-slider">Vertical:</label>
+          <input type="range" name="drop-shadow-vert-slider" id="drop-shadow-vert-slider" min="-50" max="50" value="0"
+            step="1" oninput="updateFilters(value + 'px', 'drop-shadow-vert');" />
+          <output for="drop-shadow-vert-slider" id="drop-shadow-vert-output">50</output>
+          <br>
+          <label for="drop-shadow-blur-slider">Blur:</label>
+          <input type="range" name="drop-shadow-blur-slider" id="drop-shadow-blur-slider" min="0" max="50" value="0"
+            step="1" oninput="updateFilters(value + 'px', 'drop-shadow-blur');" />
+          <output for="drop-shadow-blur-slider" id="drop-shadow-blur-output">0</output>
+          <br>
+          <label for="drop-shadow-color-picker">Color:</label>
+          <input type="text" name="drop-shadow-color-picker" id="drop-shadow-color-picker" />
+          <div id="color-picker"></div>
+        </fieldset>
+
+        <fieldset>
+          <label for="opacity-slider">Opacity:</label>
+          <input type="range" name="opacity-slider" id="opacity-slider" min="0" max="100" value="100" step="1" oninput="updateFilters(value + '%', 'opacity');" />
+          <output for="opacity-slider" id="opacity-output">100</output>
+        </fieldset>
+
+        <fieldset>
+          <label for="saturate-slider">Saturate:</label>
+          <input type="range" name="saturate-slider" id="saturate-slider" min="0" max="300" value="100" step="1"
+            oninput="updateFilters(value + '%', 'saturate');" />
+          <output for="saturate-slider" id="saturate-output">100</output>
+        </fieldset>
+
+        <fieldset>
+          <label for="sepia-slider">Sepia:</label>
+          <input type="range" name="sepia-slider" id="sepia-slider" min="0" max="100" value="0" step="1" oninput="updateFilters(value + '%', 'sepia');" />
+          <output for="sepia-slider" id="sepia-output">0</output>
+        </fieldset>
+
+      </form>
+    </div>
+    <div class="image-wrap">
+      <img id="image-1" src="/images/city-unsplash.jpg" alt="City Image - Paulo Silva from Unsplash">
+      <img id="image-2" src="/images/ocean-unsplash.jpg" alt="Ocean Image - Daniel Corneschi from Unsplash">
+      <img id="image-3" src="/images/forest-unsplash.jpg" alt="Forest Image - Casey Horner from Unsplash">
+      <img id="image-4" src="/images/desert-unsplash.jpg" alt="Desert Image - Madeline Pere from Unsplash">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/pickr-widget/dist/pickr.min.js"></script>
+    <script src="./image-filter.js"></script>
+</PageLayout>
+
+<script is:inline>
+  const changeImg = (e) => {
+		document.querySelectorAll('.image-wrap img').forEach((e) => {
+			e.className = '';
+		});
+		document.querySelector('#image-' + e).className = 'active';
+	};
+
+	const updateFilters = (val, eff) => {
+		document.querySelector('#' + eff + '-output').value = val;
+		document.querySelector('html').style.setProperty('--img-' + eff, val);
+	};
+</script>
+
+<style>
+  :root {
+      --img-blur: 0px;
+      --img-brightness: 1;
+      --img-contrast: 1;
+      --img-drop-shadow-horiz: 0;
+      --img-drop-shadow-vert: 0;
+      --img-drop-shadow-blur: 0;
+      --img-drop-shadow-color: rgba(0, 0, 0, 1);
+      --img-grayscale: 0;
+      --img-hue-rotate: 0deg;
+      --img-invert: 0;
+      --img-opacity: 1;
+      --img-saturate: 1;
+      --img-sepia: 0;
+    }
+
+    fieldset {
+      width: 50%;
+      height: 50px;
+      float: left;
+      text-align: left;
+    }
+
+    fieldset:first-child {
+      width: 100%;
+      text-align: center;
+    }
+
+    fieldset:last-child {
+      height: 75px;
+    }
+
+    fieldset:nth-child(3),
+    fieldset:nth-child(5),
+    fieldset:nth-child(7),
+    fieldset:nth-child(8) {
+      border-left: none;
+    }
+
+    img {
+      display: none;
+    }
+
+    img.active {
+      display: inline-block;
+      max-width: 100%;
+      filter: blur(var(--img-blur)) brightness(var(--img-brightness)) contrast(var(--img-contrast)) drop-shadow(var(--img-drop-shadow-horiz) var(--img-drop-shadow-vert) var(--img-drop-shadow-blur) var(--img-drop-shadow-color)) grayscale(var(--img-grayscale)) hue-rotate(var(--img-hue-rotate)) invert(var(--img-invert)) opacity(var(--img-opacity)) saturate(var(--img-saturate)) sepia(var(--img-sepia));
+    }
+
+    input[type=text] {
+      height: 22px;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      border: 1px solid white;
+      width: 50%;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 300px;
+      height: 5px;
+      background: #ccc;
+      border: none;
+      border-radius: 3px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #00c;
+      margin-top: -4px;
+    }
+
+    input[type=range]:focus {
+      outline: none;
+    }
+
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: #ccc;
+    }
+
+    input[type=range]::-moz-range-track {
+      width: 300px;
+      height: 5px;
+      background: #ccc;
+      border: none;
+      border-radius: 3px;
+    }
+
+    input[type=range]::-moz-range-thumb {
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #00c;
+    }
+
+    /*hide the outline behind the border*/
+
+    input[type=range]:-moz-focusring {
+      outline: 1px solid white;
+      outline-offset: -1px;
+    }
+
+    input[type=range]::-ms-track {
+      width: 300px;
+      height: 5px;
+
+      /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+      background: transparent;
+
+      /*leave room for the larger thumb to overflow with a transparent border */
+      border-color: transparent;
+      border-width: 6px 0;
+
+      /*remove default tick marks*/
+      color: transparent;
+    }
+
+    input[type=range]::-ms-fill-lower {
+      background: #ddd;
+      border-radius: 10px;
+    }
+
+    input[type=range]::-ms-fill-upper {
+      background: #ddd;
+      border-radius: 10px;
+    }
+
+    input[type=range]::-ms-thumb {
+      border: none;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #00c;
+    }
+
+    input[type=range]:focus::-ms-fill-lower {
+      background: #ddd;
+    }
+
+    input[type=range]:focus::-ms-fill-upper {
+      background: #ddd;
+    }
+
+    .pickr {
+      display: inline-block;
+      margin: 0 0 -7px -7px;
+    }
+
+    .pickr .pcr-button {
+      border: 1px solid #444;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .pickr .pcr-app {
+      z-index: 1;
+    }
+
+    #drop-shadow {
+      float: right;
+      height: 173px;
+    }
+</style>
