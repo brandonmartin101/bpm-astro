@@ -1,98 +1,99 @@
 ---
-const { logo } = Astro.props
-const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js`
+const { logo } = Astro.props;
+const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js`;
 ---
 
-<header class='header' transition:persist>
-  <div class='logo-wrapper'>
-    <a href='/' class='nav-link'>
-      <img class='logo' src={logo} alt='Brandon Martin' />
-      <p class='white'>Brandon Martin</p>
-    </a>
-  </div>
-  <nav class='navigation'>
-    <ul>
-      <li><a href='/about' class='nav-link'>/about</a></li>
-      <li><a href='/projects' class='nav-link'>/projects</a></li>
-      <li><a href='/uses' class='nav-link'>/uses</a></li>
-      <li><a href='/now' class='nav-link'>/now</a></li>
-    </ul>
-  </nav>
-  <canvas class='background'></canvas>
-  <script is:inline src={miniGL}></script>
-  <script is:inline>
-    const gradient = new Gradient()
-    gradient.initGradient('.background')
-  </script>
+<!-- <header class='header' transition:persist> -->
+<header class='header'>
+	<div class='logo-wrapper'>
+		<a href='/' class='nav-link'>
+			<img class='logo' src={logo} alt='Brandon Martin' />
+			<p class='white'>Brandon Martin</p>
+		</a>
+	</div>
+	<nav class='navigation'>
+		<ul>
+			<li><a href='/about' class='nav-link'>/about</a></li>
+			<li><a href='/projects' class='nav-link'>/projects</a></li>
+			<li><a href='/uses' class='nav-link'>/uses</a></li>
+			<li><a href='/now' class='nav-link'>/now</a></li>
+		</ul>
+	</nav>
+	<canvas class='background'></canvas>
+	<script is:inline src={miniGL}></script>
+	<script is:inline>
+		const gradient = new Gradient();
+		gradient.initGradient('.background');
+	</script>
 </header>
 
 <style>
-  a,
-  a:focus,
-  a:hover,
-  a:visited {
-    color: white;
-  }
-  ul {
-    display: inline-block;
-    column-count: 4;
-    @media (max-width: 900px) {
-      & {
-        column-count: 2;
-      }
-    }
-    @media (max-width: 450px) {
-      & {
-        column-count: 1;
-      }
-    }
-  }
+	a,
+	a:focus,
+	a:hover,
+	a:visited {
+		color: white;
+	}
+	ul {
+		display: inline-block;
+		column-count: 4;
+		@media (max-width: 900px) {
+			& {
+				column-count: 2;
+			}
+		}
+		@media (max-width: 450px) {
+			& {
+				column-count: 1;
+			}
+		}
+	}
 
-  @media (max-width: 450px) {
-    ul {
-      column-count: 1;
-    }
-  }
-  li {
-    list-style-type: none;
-  }
-  .header {
-    background: #222;
-    box-shadow: 0 0 5px #222;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin: 0;
-    padding: 0 20px;
-    overflow: hidden;
-    position: relative;
-  }
-  .logo-wrapper,
-  .navigation {
-    z-index: 1;
-  }
-  .logo {
-    margin: 0 auto;
-    max-width: 80px;
-    max-height: 80px;
-  }
-  .background {
-    z-index: 0;
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    max-height: 100%;
-    transform: rotate(0deg) scale(2) translateY(0%);
-    background: #4805ba;
-    --gradient-color-1: #4805ba;
-    --gradient-color-2: #f728f3;
-    --gradient-color-3: #158a15;
-    --gradient-color-4: #305995;
-    --gradient-speed: 0.000006;
-  }
+	@media (max-width: 450px) {
+		ul {
+			column-count: 1;
+		}
+	}
+	li {
+		list-style-type: none;
+	}
+	.header {
+		background: #222;
+		box-shadow: 0 0 5px #222;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		font-size: 1.4rem;
+		font-weight: bold;
+		margin: 0;
+		padding: 0 20px;
+		overflow: hidden;
+		position: relative;
+	}
+	.logo-wrapper,
+	.navigation {
+		z-index: 1;
+	}
+	.logo {
+		margin: 0 auto;
+		max-width: 80px;
+		max-height: 80px;
+	}
+	.background {
+		z-index: 0;
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		max-height: 100%;
+		transform: rotate(0deg) scale(2) translateY(0%);
+		background: #4805ba;
+		--gradient-color-1: #4805ba;
+		--gradient-color-2: #f728f3;
+		--gradient-color-3: #158a15;
+		--gradient-color-4: #305995;
+		--gradient-speed: 0.000006;
+	}
 </style>

@@ -1,23 +1,24 @@
 ---
-import '../styles/global.scss'
-import Helmet from '../components/Helmet.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
+import '../styles/global.scss';
+import Helmet from '../components/Helmet.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-const { title } = Astro.props
-const { addScript } = Astro.props
+const { title } = Astro.props;
+const { addScript } = Astro.props;
 
-const logoSeed = Math.floor(Math.random() * 20)
-const logo = `/avatars/avatar-${logoSeed}.svg`
+const logoSeed = Math.floor(Math.random() * 20);
+const logo = `/avatars/avatar-${logoSeed}.svg`;
 ---
 
 <html lang='en' data-theme='light'>
-  <Helmet title={`Brandon Martin | ${title}`} favicon={logo} addScript={addScript} />
-  <body>
-    <Header logo={logo} />
-    <main class='main' transition:name='main' transition:animate='fade'>
-      <slot />
-    </main>
-    <Footer />
-  </body>
+	<Helmet title={`Brandon Martin | ${title}`} favicon={logo} addScript={addScript} />
+	<body>
+		<Header logo={logo} />
+		<!-- <main class='main' transition:name='main' transition:animate='fade'> -->
+		<main class='main'>
+			<slot />
+		</main>
+		<Footer />
+	</body>
 </html>
