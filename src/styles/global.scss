@@ -48,12 +48,10 @@ a {
 	}
 }
 
-.header,
-.footer {
+.header {
 	width: 100%;
 }
-.main,
-.footer {
+.main {
 	padding: 0.5rem;
 	display: flex;
 }
@@ -64,45 +62,6 @@ a {
 	align-content: center;
 	flex-direction: column;
 	padding-top: 50px;
-}
-
-.footer {
-	font-size: 0.8rem;
-	flex-direction: row;
-	align-content: center;
-	justify-content: center;
-	border-top: 1px solid #ccc;
-}
-.footer button {
-	color: transparent;
-	background: transparent;
-	border: none;
-	font-size: 0;
-	width: 20px;
-	height: 20px;
-}
-.footer button:hover {
-	color: black;
-}
-.footer .theme-switcher,
-.footer .night-switcher {
-	flex: 0;
-}
-.footer .tools-attribution {
-	flex: 1 1;
-}
-
-.socials {
-	display: flex;
-	margin: 3rem auto;
-}
-.socials .social-icon {
-	margin: 0 1rem;
-	color: config.$color;
-	transition: 0.3s;
-}
-.socials .social-icon:hover {
-	color: config.$special;
 }
 
 .special {

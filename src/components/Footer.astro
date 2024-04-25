@@ -1,13 +1,45 @@
+---
+import Socials from './Socials.astro';
+---
+
 <!-- <footer class='footer' transition:persist> -->
-<footer class='footer' hidden>
-	<span class='tools-attribution'
+<footer class='footer'>
+	<span class='tools-attribution' hidden
 		>Built with <a href='https://astro.build/' target='_blank' rel='noopener noreferrer'>Astro</a></span
 	>
-	<button class='theme-switcher'>Change Theme</button>
+	<Socials />
+	<!-- TODO: Add theme switcher / dark mode -->
+	<button class='theme-switcher' hidden>Change Theme</button>
 </footer>
 
 <style>
-	footer {
+	.footer {
+		padding: 1rem 15px;
+		display: flex;
 		box-shadow: 0 0 5px #2224;
+		font-size: 0.8rem;
+		flex-direction: row;
+		align-content: center;
+		justify-content: center;
+		border-top: 1px solid #ccc;
+	}
+
+	.footer .theme-switcher {
+		color: transparent;
+		background: transparent;
+		border: none;
+		font-size: 0;
+		width: 20px;
+		height: 20px;
+	}
+	.footer .theme-switcher:hover {
+		color: black;
+	}
+	.footer .theme-switcher,
+	.footer .night-switcher {
+		flex: 0;
+	}
+	.footer .tools-attribution {
+		flex: 1 1;
 	}
 </style>
