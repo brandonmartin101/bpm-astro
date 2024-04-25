@@ -16,7 +16,7 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 			<li><a href='/about' class='nav-link'>/about</a></li>
 			<li><a href='/projects' class='nav-link'>/projects</a></li>
 			<li><a href='/uses' class='nav-link'>/uses</a></li>
-			<li><a href='/now' class='nav-link'>/now</a></li>
+			<!-- <li><a href='/now' class='nav-link'>/now</a></li> -->
 		</ul>
 	</nav>
 	<canvas class='background'></canvas>
@@ -28,6 +28,22 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 </header>
 
 <style>
+	.header {
+		width: 100%;
+		background: #222;
+		box-shadow: 0 0 5px #222;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+		font-size: 1.4rem;
+		font-weight: bold;
+		margin: 0;
+		padding: 0 20px;
+		overflow: hidden;
+		position: relative;
+	}
 	a,
 	a:focus,
 	a:hover,
@@ -36,7 +52,7 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 	}
 	ul {
 		display: inline-block;
-		column-count: 4;
+		column-count: 3;
 		@media (max-width: 900px) {
 			& {
 				column-count: 2;
@@ -56,21 +72,6 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 	}
 	li {
 		list-style-type: none;
-	}
-	.header {
-		background: #222;
-		box-shadow: 0 0 5px #222;
-		display: flex;
-		align-content: center;
-		align-items: center;
-		justify-content: space-between;
-		gap: 10px;
-		font-size: 1.4rem;
-		font-weight: bold;
-		margin: 0;
-		padding: 0 20px;
-		overflow: hidden;
-		position: relative;
 	}
 	.logo-wrapper,
 	.navigation {
