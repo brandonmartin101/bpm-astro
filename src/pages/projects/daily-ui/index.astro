@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import DailyUI from '../../../components/dailyui/DailyUIListing.astro';
+import { designs } from './designs.ts';
+---
+
+<PageLayout title='Daily UI List'>
+	<section class='about'>
+		<h1>Daily UI Exercises</h1>
+		<p>
+			This is a collection of daily UI exercises from <a href='https://www.dailyui.co/' target='_blank'>Daily UI</a>.
+		</p>
+	</section>
+	<section class='designs'>
+		{designs.map((design) => <DailyUI name={design.name} design={design.design} />)}
+	</section>
+</PageLayout>
+
+<style>
+	section {
+		margin: 0 0 40px;
+	}
+	.designs {
+		padding: 0 30px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 50px;
+	}
+</style>

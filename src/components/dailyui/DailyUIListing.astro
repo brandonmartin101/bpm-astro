@@ -1,0 +1,25 @@
+---
+const { name, design } = Astro.props;
+---
+
+<div class='design'>
+	<h2>{name}</h2>
+	<a class='design-wrap' href=`./${design}`>
+		<img src='/images/daily-ui/001.png' alt={design} />
+	</a>
+</div>
+
+<style>
+	h2 {
+		font-size: 1.2rem;
+	}
+	.design {
+		flex-basis: 300px;
+	}
+	.design-wrap {
+		display: block;
+		margin-top: 20px;
+		border: none;
+		box-shadow: 0 0 5px 1px #000a;
+	}
+</style>

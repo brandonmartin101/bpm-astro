@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import * as react from '../../components/react/plates/PlatesCalculator';
+
+/* PlatesCalculator component structure:
+
+  --PlatesCalculator
+    --AvailablePlates
+      --AvailablePlate
+    --PlateOptions
+      --WeightTarget
+      --BarbellWeight
+      --CollarWeight
+      --Units
+    --Calculate
+    --PlatesResult
+
+Ideas:
+https://exrx.net/Calculators/WeightPlate
+https://www.barbellcalculator.com/
+https://www.carlosrendon.me/barbell_rack_calculator/
+https://strengthlevel.com/plate-barbell-racking-calculator
+*/
+---
+
+<PageLayout title='Barbell Plates Calculator'>
+	<h1>Barbell Plates Calculator</h1>
+	<react.PlatesCalculator />
+</PageLayout>

@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import * as react from '../../components/react/HiitGenerator';
+
+/* HiitGenerator component structure:
+
+  HiitGenerator
+  --Options
+    --Option
+      --How many exercises
+        --Input
+      --How many rounds
+        --Input
+      --Work duration
+        --Input
+      --Rest duration
+        --Input
+    --Input
+  --Exercises
+    --Exercise
+  --Timer
+
+*/
+---
+
+<PageLayout title='HIIT Workout Generator'>
+	<h1>HIIT Workout Generator</h1>
+	<react.HiitGenerator />
+</PageLayout>

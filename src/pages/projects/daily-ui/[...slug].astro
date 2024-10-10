@@ -1,0 +1,30 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import { designs } from './designs.ts';
+
+const { slug } = Astro.params;
+let projectNumber = slug;
+if (typeof slug !== 'string' || slug.length !== 3 || !/^[0-9]+$/.test(slug)) projectNumber = '001';
+const design = designs.find((design) => design.design === projectNumber);
+if (!design) projectNumber = '001';
+
+let DailyUIComponent;
+try {
+	DailyUIComponent = await import(`../../../components/dailyui/DailyUI.${projectNumber}.astro`);
+} catch (e) {
+	console.error('Failed to import', e);
+	DailyUIComponent = {
+		default: () => `<h1>Failed to load Daily UI</h1>`,
+	};
+}
+---
+
+<PageLayout title=`Daily UI - ${projectNumber}`>
+	<section class='about'>
+		<h1>{design.name}</h1>
+		<p>{design.description}</p>
+	</section>
+	<section class='design'>
+		<DailyUIComponent.default />
+	</section>
+</PageLayout>
