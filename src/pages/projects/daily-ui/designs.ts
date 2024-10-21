@@ -175,4 +175,64 @@ export const designs: Design[] = [
 		design: '034',
 		description: `Consider the elements you'd want and need in your own vehicle's dashboard. If you don't have a car, think of what's needed to control one in a video game, a VR headset, or in a movie. Be creative, yet logical.`,
 	},
+	{
+		name: '035 - Blog Post',
+		design: '035',
+		description: `Consider what's important- the content of course. Also consider the author, date, category, comments, layout, etc. Are you viewing it as the author (with extra features for editing content) or a reader?`,
+	},
+	{
+		name: '036 - Special Offer',
+		design: '036',
+		description: `Design a promo. What is the product and how is it being promoted? Is it an email promotion, a clearance item on a website, a “Buy One, Get One” offer, or something else? Is it the discount size or percentage that's important? Does it look compelling?`,
+	},
+	{
+		name: '037 - Weather Design',
+		design: '037',
+		description: `It could be a UI for a mobile app, a web app, or something completely different such as a weather alert widget. Consider its elements: city, temperature, forecasts, colors, weather icons/graphics, etc. Is it being viewed on a smart watch or phone? Is it a weather warning for a storm or is it something unique such as something for a farm?`,
+	},
+	{
+		name: '038 - Calendar',
+		design: '038',
+		description: `Design a Calendar focused element. Is it for scheduling an appointment? A reservation, flight, hotel, or a health check? Is it a calendar reminder feature? Is it used in email or for something else entirely? It could even be a calendar booking page for design services. Or an interactive online holiday calendar.`,
+	},
+	{
+		name: '039 - Testimonial',
+		design: '039',
+		description: `Create a design with some kind of testimonial. It could be a book or product review testimonial. Who is the customer? What did they buy and why did they enjoy it? Is there a star rating or a 1-10 style review? Testimonials help build trust with an audience so these can be especially important elements for a website.`,
+	},
+	{
+		name: '040 - Recipe or Food Order',
+		design: '040',
+		description: `Design a food related recipe. It could displayed on a tablet while someone is cooking in their home kitchen or in the back of a restaurant on a Kitchen Display System (aka KDS). Clarity is important because a restaurant or online food ordering service needs to be simple in order to be fast for customers to find what they want and how it can be customized. Confusing menus or recipes slow down the kitchen and the entire business.`,
+	},
+	{
+		name: '041 - Workout / Exercise',
+		design: '041',
+		description: `Create a UI related for monitoring health or tracking various workout/training routines. It could be for a personal workout, for a team, or even gym equipment tracking customer workouts. Making a health app that is fun to use makes the entire experience more enjoyable and therefor more likely to be repeated. Tip: exercise regularly to get blood and oxygen flowing for health, better sleep, and to boost your creative mood. It's easier to be happy if you're healthy. :)`,
+	},
+	{
+		name: '042 - To-Do List or Manager',
+		design: '042',
+		description: `Everyone has priorities. Working in technology is a never-ending flow of new projects, requests, revisions, and more. What productivity software or tool would you use to improve your workflow?`,
+	},
+	{
+		name: '043 - Food Menu Items',
+		design: '043',
+		description: `Create a food menu for a bar or restaurant. It could be a simple coffee shop or a more complex menu such as for a pizza restaurant (with multiple sizes, toppings, variations, etc.). Or is it for a touchscreen tabletop ordering system at a nightclub? You can be creative here.`,
+	},
+	{
+		name: '044 - Favorites',
+		design: '044',
+		description: `Bookstores, video games, podcasts, and streaming services all have a favorites section. Are you favoriting certain items? Or are you favoriting something on a website such as Facebook, Behance, Github, etc.?`,
+	},
+	{
+		name: '045 - Info Card',
+		design: '045',
+		description: `These are designed to be snippets of information - so not too much, just the basics. What's being viewed? Is it a small information area about a home for sale? (square footage, # of bathrooms and bedrooms, year built) Or a gamer's profile page with some recent statistics?`,
+	},
+	{
+		name: '046 - Invoice',
+		design: '046',
+		description: `Invoices are generally sent for products or services before or after fulfillment. For example, a web designer or software engineer might send an invoice for a new website with 25% as a downpayment and the remainder on completion. This is not a quote or proposal, so it should have only the required information for payment, services rendered, prices, etc. and ideally a link/button to receive payment. Tip: An invoice is a nice opportunity to thank a client. Uplifting comments can put clients in a good mood. If you know them in a personal/friendly context, sometimes a meme can help break the ice on making a payment. :)`,
+	},
 ];
