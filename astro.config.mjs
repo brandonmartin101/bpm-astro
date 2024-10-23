@@ -4,7 +4,7 @@ import svelte from '@astrojs/svelte';
 import vue from '@astrojs/vue';
 import solid from '@astrojs/solid-js';
 import sitemap from '@astrojs/sitemap';
-import netlify from '@astrojs/netlify/functions';
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
