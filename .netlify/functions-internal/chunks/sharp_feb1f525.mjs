@@ -3,7 +3,7 @@ import { b as baseService, p as parseQuality } from './pages/image-endpoint_bd7b
 import 'html-escaper';
 import 'clsx';
 import '@astrojs/internal-helpers/path';
-import 'mime/lite.js';
+import 'mime/lite';
 
 let sharp;
 const qualityTable = {

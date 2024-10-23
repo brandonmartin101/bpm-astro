@@ -1,4 +1,4 @@
-import * as adapter from '@astrojs/netlify/netlify-functions.js';
+import * as adapter from '@astrojs/netlify/netlify-functions';
 import { renderers } from './renderers.mjs';
 import { manifest } from './manifest_579a1fd5.mjs';
 import 'react';

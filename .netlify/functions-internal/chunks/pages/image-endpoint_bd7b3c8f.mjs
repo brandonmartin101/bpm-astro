@@ -1,5 +1,5 @@
 import { joinPaths, isRemotePath } from '@astrojs/internal-helpers/path';
-import mime from 'mime/lite.js';
+import mime from 'mime/lite';
 import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as InvalidImageService, g as ExpectedImageOptions, c as createAstro, a as createComponent, h as ImageMissingAlt, r as renderTemplate, m as maybeRenderHead, b as addAttribute, s as spreadAttributes } from '../astro_3995580b.mjs';
 import 'html-escaper';
 import 'clsx';
