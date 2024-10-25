@@ -1,6 +1,10 @@
 @use 'reset';
 @use 'config';
 
+* {
+	scrollbar-width: thin;
+}
+
 html,
 body {
 	font-family: config.$font-family;
