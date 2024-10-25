@@ -1,141 +1,138 @@
 ---
-import PageLayout from '../../../layouts/PageLayout.astro'
+import PageLayout from '../../../layouts/PageLayout.astro';
 ---
 
 <PageLayout title='Drum Machine'>
-  <h1>Drum Machine</h1>
-  <p>A drum machine. That's it. Have fun!</p>
-  <div class="keys">
-    <div data-key="70" class="key triple" onclick="playSound(70);">
-      <kbd>F</kbd>
-      <span class="sound">openhat</span>
-    </div>
-    <div data-key="72" class="key triple" onclick="playSound(72);">
-      <kbd>H</kbd>
-      <span class="sound">ride</span>
-    </div>
-    <div class="key synth" onclick="playToneScale();">
-      <kbd>Q</kbd>
-      <kbd>W</kbd>
-      <kbd>E</kbd>
-      <kbd>R</kbd>
-      <kbd>T</kbd>
-      <kbd>Y</kbd>
-      <kbd>U</kbd>
-      <kbd>I</kbd>
-      <kbd>O</kbd>
-      <kbd>P</kbd>
-      <span class="sound">synth</span>
-    </div>
-    <div data-key="65" class="key single" onclick="playSound(65);">
-      <kbd>A</kbd>
-      <span class="sound">clap</span>
-    </div>
-    <div data-key="83" class="key single" onclick="playSound(83);">
-      <kbd>S</kbd>
-      <span class="sound">hihat</span>
-    </div>
-    <div data-key="68" class="key single" onclick="playSound(68);">
-      <kbd>D</kbd>
-      <span class="sound">boom</span>
-    </div>
-    <div data-key="74" class="key single" onclick="playSound(74);">
-      <kbd>J</kbd>
-      <span class="sound">snare</span>
-    </div>
-    <div data-key="75" class="key single" onclick="playSound(75);">
-      <kbd>K</kbd>
-      <span class="sound">tom</span>
-    </div>
-    <div data-key="76" class="key single" onclick="playSound(76);">
-      <kbd>L</kbd>
-      <span class="sound">tink</span>
-    </div>
-    <div data-key="32" class="key wide" onclick="playSound(32);">
-      <kbd>Space</kbd>
-      <span class="sound">kick</span>
-    </div>
-  </div>
+	<h1>Drum Machine</h1>
+	<p>A drum machine. That's it. Make sure to turn it on before playing. Have fun!</p>
+	<div class='keys disabled'>
+		<div data-key='f' class='key triple' onclick=`drumMachine.playDrum('f');`>
+			<kbd>F</kbd>
+			<span class='sound'>openhat</span>
+		</div>
+		<div data-key='h' class='key triple' onclick=`drumMachine.playDrum('h');`>
+			<kbd>H</kbd>
+			<span class='sound'>ride</span>
+		</div>
+		<div data-key='Synth' class='key synth' onclick='drumMachine.playToneScale();'>
+			<kbd>Q</kbd>
+			<kbd>W</kbd>
+			<kbd>E</kbd>
+			<kbd>R</kbd>
+			<kbd>T</kbd>
+			<kbd>Y</kbd>
+			<kbd>U</kbd>
+			<kbd>I</kbd>
+			<kbd>O</kbd>
+			<kbd>P</kbd>
+			<span class='sound'>synth</span>
+		</div>
+		<div data-key='a' class='key single' onclick=`drumMachine.playDrum('a');`>
+			<kbd>A</kbd>
+			<span class='sound'>clap</span>
+		</div>
+		<div data-key='s' class='key single' onclick=`drumMachine.playDrum('s')`>
+			<kbd>S</kbd>
+			<span class='sound'>hihat</span>
+		</div>
+		<div data-key='d' class='key single' onclick=`drumMachine.playDrum('d')`>
+			<kbd>D</kbd>
+			<span class='sound'>boom</span>
+		</div>
+		<div data-key='j' class='key single' onclick=`drumMachine.playDrum('j')`>
+			<kbd>J</kbd>
+			<span class='sound'>snare</span>
+		</div>
+		<div data-key='k' class='key single' onclick=`drumMachine.playDrum('k')`>
+			<kbd>K</kbd>
+			<span class='sound'>tom</span>
+		</div>
+		<div data-key='l' class='key single' onclick=`drumMachine.playDrum('l')`>
+			<kbd>L</kbd>
+			<span class='sound'>tink</span>
+		</div>
+		<div data-key='Space' class='key wide' onclick=`drumMachine.playDrum('Space')`>
+			<kbd>Space</kbd>
+			<span class='sound'>kick</span>
+		</div>
+	</div>
 
-  <div class="audio-wrapper">
-    <audio data-key="65" id="key65" src="/audio/drums/clap.wav"></audio>
-    <audio data-key="83" id="key83" src="/audio/drums/hihat.wav"></audio>
-    <audio data-key="32" id="key32" src="/audio/drums/kick.wav"></audio>
-    <audio data-key="70" id="key70" src="/audio/drums/openhat.wav"></audio>
-    <audio data-key="68" id="key68" src="/audio/drums/boom.wav"></audio>
-    <audio data-key="72" id="key72" src="/audio/drums/ride.wav"></audio>
-    <audio data-key="74" id="key74" src="/audio/drums/snare.wav"></audio>
-    <audio data-key="75" id="key75" src="/audio/drums/tom.wav"></audio>
-    <audio data-key="76" id="key76" src="/audio/drums/tink.wav"></audio>
-  </div>
+	<div class='buttons-wrapper'>
+		<button id='start-drum-machine' onclick='drumMachine.init()'>Turn On</button>
+		<button id='auto-play' onclick='drumMachine.autoPlay()' disabled>Auto-Play</button>
+		<button id='stop-auto-play' onclick='drumMachine.stopAutoPlay()' disabled>Stop Auto-Play</button>
+	</div>
 
-  <div class="buttons-wrapper">
-    <button id="auto-play" onclick="autoPlay();">Auto-Play</button>
-    <button id="stop-auto-play" onclick="stopAutoPlay();" disabled>Stop Auto-Play</button>
-  </div>
-
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"
-    integrity="sha512-Siyxh4gyNM5SaERNa9BOZSPcu/auHyFUWn9OVFD7MxI3/dVPQklE7tfqS+pLmPHF1zo6UdDaJAp/thihrf0c7w=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <script src="./drum-machine.js"></script>
+	<script
+		src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js'
+		integrity='sha512-Siyxh4gyNM5SaERNa9BOZSPcu/auHyFUWn9OVFD7MxI3/dVPQklE7tfqS+pLmPHF1zo6UdDaJAp/thihrf0c7w=='
+		crossorigin='anonymous'
+		referrerpolicy='no-referrer'
+	></script>
+	<script src='./drum-machine.js'></script>
 </PageLayout>
 
 <style>
-  kbd {
-    display: block;
-    font-size: 2rem;
-  }
+	kbd {
+		display: block;
+		font-size: 2rem;
+	}
 
-  button {
-    margin-top: 20px;
-  }
+	button {
+		margin-top: 20px;
+	}
 
-  .keys {
-    width: 80%;
-    min-width: 500px;
-    margin: 20px auto 0;
-  }
+	.keys {
+		width: 80%;
+		min-width: 500px;
+		margin: 20px auto 0;
+	}
+	.keys.disabled {
+		opacity: 0.5;
+	}
 
-  .key {
-    background: #ededed;
-    border: 1px solid #777;
-    padding: 10px;
-    text-align: center;
-    float: left;
-    margin-bottom: -1px;
-  }
+	.key {
+		background: #ededed;
+		border: 1px solid #777;
+		padding: 10px;
+		text-align: center;
+		float: left;
+		margin-bottom: -1px;
+		cursor: pointer;
+		user-select: none;
+	}
+	.keys.disabled .key {
+		cursor: not-allowed;
+	}
 
-  .key.synth {
-    width: 100%;
-  }
+	.key.synth {
+		width: 100%;
+	}
 
-  .synth kbd {
-    display: inline-block;
-    width: 9%;
-    max-width: 30px;
-  }
+	.synth kbd {
+		display: inline-block;
+		width: 9%;
+		max-width: 30px;
+	}
 
-  .synth .sound {
-    display: block;
-  }
+	.synth .sound {
+		display: block;
+	}
 
-  .triple {
-    width: calc(100% / 2);
-  }
+	.triple {
+		width: calc(100% / 2);
+	}
 
-  .single {
-    width: calc(100% / 6);
-  }
+	.single {
+		width: calc(100% / 6);
+	}
 
-  .wide {
-    width: 100%;
-  }
+	.wide {
+		width: 100%;
+	}
 
-  .key.triple:first-child,
-  .key.single:not(:nth-last-child(2)) {
-    border-right: none;
-  }
+	.key.triple:first-child,
+	.key.single:not(:nth-last-child(2)) {
+		border-right: none;
+	}
 </style>
