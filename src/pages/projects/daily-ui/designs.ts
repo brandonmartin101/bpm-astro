@@ -235,4 +235,19 @@ export const designs: Design[] = [
 		design: '046',
 		description: `Invoices are generally sent for products or services before or after fulfillment. For example, a web designer or software engineer might send an invoice for a new website with 25% as a downpayment and the remainder on completion. This is not a quote or proposal, so it should have only the required information for payment, services rendered, prices, etc. and ideally a link/button to receive payment. Tip: An invoice is a nice opportunity to thank a client. Uplifting comments can put clients in a good mood. If you know them in a personal/friendly context, sometimes a meme can help break the ice on making a payment. :)`,
 	},
+	{
+		name: '047 - Activity Feed',
+		design: '047',
+		description: `Everyday we're overwhelmed with information. Design an activity feed that's fun and useful. It could be for a news reader app, a social media site, or for inspirational travel content updates.`,
+	},
+	{
+		name: '048 - Coming Soon',
+		design: '048',
+		description: `What's coming soon? A new video game? A new blockbuster film? When and where is it being released? Or is this for a specific company or product announcement? Some brands are famous for their teaser and coming soon pages. It's an opportunity to excite and/or educate your users.`,
+	},
+	{
+		name: '049 - Notification',
+		design: '049',
+		description: `Today's challenge is super simple. Just a plain and easy notification. It could be a daily reminder to take medication, a new message received notification, or app updates.`,
+	},
 ];
