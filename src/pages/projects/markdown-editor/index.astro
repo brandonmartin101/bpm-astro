@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import MarkdownEditor from '../../../components/vue/MarkDownEditor.vue';
+const exampleMarkdown = await import('./example.md?raw').then((m) => m.default);
 ---
 
 <PageLayout title='Markdown Editor'>
@@ -9,7 +10,7 @@ import MarkdownEditor from '../../../components/vue/MarkDownEditor.vue';
 		This is a simple Markdown editor built with Vue. Just for my own needs editing Markdown occasionally. It's built as
 		a Vue component (previously React).
 	</p>
-	<MarkdownEditor client:load />
+	<MarkdownEditor client:load exampleMarkdown={exampleMarkdown} />
 </PageLayout>
 
 <style>

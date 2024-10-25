@@ -1,8 +1,3 @@
----
-title: 'Example MD'
-author: 'Brandon'
----
-
 # h1
 
 ## h2
@@ -35,7 +30,7 @@ horizontal rule
 
 ---
 
-[A link that goes somewhere](https://www.example.com/)
+[A link that goes somewhere](https://brandonmartin.dev/)
 
 ![alt text](image link)
 

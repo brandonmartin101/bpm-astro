@@ -9,11 +9,25 @@
 			<div class="md-text-output" v-html="renderedHtml"></div>
 		</div>
 	</div>
+	<div class="file-upload">
+		<input
+			type="file"
+			accept=".md,.markdown,text/markdown"
+			@change="handleFileUpload"
+			ref="fileInput"
+			class="upload-input hidden"
+		/>
+		<button @click="$refs.fileInput.click()" class="upload-button">Load Markdown File</button>
+	</div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import MarkdownIt from 'markdown-it';
+
+const props = defineProps<{
+	exampleMarkdown?: string;
+}>();
 
 const md = new MarkdownIt({
 	html: true,
@@ -21,9 +35,25 @@ const md = new MarkdownIt({
 	typographer: true,
 });
 
-const markdown = ref('# Welcome to the Markdown Editor\n\nStart typing here...');
-
+const markdown = ref(props.exampleMarkdown || '# Welcome to the Markdown Editor\n\nStart typing here...');
 const renderedHtml = computed(() => md.render(markdown.value));
+
+const fileInput = ref<HTMLInputElement | null>(null);
+const handleFileUpload = async (e: Event) => {
+	const input = e.target as HTMLInputElement;
+	if (!input.files?.length) return;
+
+	const file = input.files[0];
+	try {
+		const text = await file.text();
+		markdown.value = text;
+	} catch (error) {
+		console.error('Error reading file:', error);
+		alert('Error reading file');
+	}
+
+	if (fileInput.value) fileInput.value.value = '';
+};
 </script>
 
 <style scoped>
