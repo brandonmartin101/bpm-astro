@@ -4,7 +4,11 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 
 <PageLayout title='Drum Machine'>
 	<h1>Drum Machine</h1>
-	<p>A drum machine. That's it. Make sure to turn it on before playing. Have fun!</p>
+	<p>
+		This is a drum machine I built a few years ago when I was just starting to learn JavaScript. It's super simple, uses
+		local drum sounds, and uses the Tone.js library for the synthesizer sounds. That's it. Make sure to turn it on
+		before playing. Have fun!
+	</p>
 	<div class='keys disabled'>
 		<div data-key='f' class='key triple' onclick=`drumMachine.playDrum('f');`>
 			<kbd>F</kbd>
