@@ -1,0 +1,9 @@
+---
+import PageLayoutSimple from '../../../layouts/PageLayoutSimple.astro';
+import PartyKitPoll from '../../../components/vue/PartyKitPoll.vue';
+import '../../../styles/polls.css';
+---
+
+<PageLayoutSimple title='Live Poll'>
+	<PartyKitPoll client:only='vue' />
+</PageLayoutSimple>

@@ -1,0 +1,15 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import PartyKitAdmin from '../../../components/vue/PartyKitAdmin.vue';
+import '../../../styles/polls.css';
+---
+
+<PageLayout title='Live Poll'>
+	<h1>Live Poll</h1>
+	<p>
+		Live poll built with Vue and PartyKit. For info on this project, visit <a href='/projects/live-poll/about'>
+			/projects/live-poll/about
+		</a>.
+	</p>
+	<PartyKitAdmin client:only='vue' />
+</PageLayout>

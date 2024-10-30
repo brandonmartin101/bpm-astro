@@ -1,0 +1,19 @@
+---
+import '../styles/global.scss';
+import Helmet from '../components/Helmet.astro';
+
+const { title } = Astro.props;
+const { addScript } = Astro.props;
+
+const logoSeed = Math.floor(Math.random() * 20);
+const logo = `/avatars/avatar-${logoSeed}.svg`;
+---
+
+<html lang='en' data-theme='light'>
+	<Helmet title={`Brandon Martin | ${title}`} favicon={logo} addScript={addScript} />
+	<body>
+		<main class='main'>
+			<slot />
+		</main>
+	</body>
+</html>

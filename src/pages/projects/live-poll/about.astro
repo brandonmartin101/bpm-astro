@@ -1,0 +1,29 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+---
+
+<PageLayout title='Live Poll'>
+	<h1>Live Poll</h1>
+	<article>
+		<p>
+			Live poll tool built with Vue and PartyKit. I use this when teaching classes. Students come to the live-poll page
+			and can select an option from A to E. I instruct them live what each option means. There are 3 live polls at any
+			given moment, visible at <a href='/projects/live-poll'>/live-poll</a>. I switch between polls as I have multiple
+			questions to work through. There is a separate admin page at <a href='/projects/live-poll/admin'>
+				/live-poll/admin
+			</a>. From the admin page, the active poll can be selected for all respondents, and polls can be reset as needed.
+		</p>
+		<p><a href='/projects/live-poll'>Live Polls</a></p>
+		<p><a href='/projects/live-poll/admin'>Admin</a></p>
+	</article>
+</PageLayout>
+
+<style>
+	article {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	article p {
+		margin: 10px 0;
+	}
+</style>
