@@ -250,4 +250,24 @@ export const designs: Design[] = [
 		design: '049',
 		description: `Today's challenge is super simple. Just a plain and easy notification. It could be a daily reminder to take medication, a new message received notification, or app updates.`,
 	},
+	{
+		name: '050 - Job Listing or Hiring Page',
+		design: '050',
+		description: `Who is hiring? What's the position? Where is it located? Are there benefits? Hiring pages are a great opportunity for brands to give fun facts about their team. That can help prospective employees learn something interesting that could inspire them. For example, a team page might say “We take an annual team vacation to Hawaii.”`,
+	},
+	{
+		name: '051 - Press Page',
+		design: '051',
+		description: `Create a Press Page design. Think about who you are representing and what important information you should convey. Is it for a new startup? A huge global brand? A nonprofit organization? Or a small local business? Or is it actually for a person such as a celebrity, athlete, politician, etc.?`,
+	},
+	{
+		name: '052 - Logo Design',
+		design: '052',
+		description: `Will it be animated? In what capacity will it be used? Branding is generally a serious matter for most companies and the considerations for size, placement, color, etc. should be thought out carefully. The biggest brands don't always have the best logos. A great logo is one that compliments a specific purpose and not necessarily a generic image or name. For example, Nike uses a swoosh which shows motion and speed - core parts of their running image. Mailchimp showcases a monkey rather than an “email” icon and it adds depth and character to their brand.`,
+	},
+	{
+		name: '053 - Website Navigation',
+		design: '053',
+		description: `Most websites have a navbar that's stuffed with links and logos. What could you design that's both functional and appealing? How could you make it unique?`,
+	},
 ];
