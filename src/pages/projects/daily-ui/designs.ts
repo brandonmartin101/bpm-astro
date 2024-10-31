@@ -270,4 +270,14 @@ export const designs: Design[] = [
 		design: '053',
 		description: `Most websites have a navbar that's stuffed with links and logos. What could you design that's both functional and appealing? How could you make it unique?`,
 	},
+	{
+		name: '054 - Confirmation',
+		design: '054',
+		description: `Design a Confirmation UI element. What's being confirmed? Is it confirming an address, order, shipping, plane tickets, hotel reservation, dinner reservation, booking tickets to the opera, or something else? Also consider where it's occurring (i.e. website, mobile app, email confirmation, etc.)`,
+	},
+	{
+		name: '055 - Icon Set',
+		design: '055',
+		description: `Create some icons to be used together. It could be for a taskbar, showcasing features or services, or even for something like a shopping app. (Icons might be a cart, a shipping box, a size icon, etc.)`,
+	},
 ];
