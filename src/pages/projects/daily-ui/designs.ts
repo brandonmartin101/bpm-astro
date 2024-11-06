@@ -280,4 +280,34 @@ export const designs: Design[] = [
 		design: '055',
 		description: `Create some icons to be used together. It could be for a taskbar, showcasing features or services, or even for something like a shopping app. (Icons might be a cart, a shipping box, a size icon, etc.)`,
 	},
+	{
+		name: '056 - Breadcrumbs',
+		design: '056',
+		description: `Every interaction on a website or within an app is an opportunity. Although a seemingly small detail, breadcrumbs are very necessary and yet often neglected in terms of their appearance and functionality. To truly achieve great design sense you need to consider even the smallest details.`,
+	},
+	{
+		name: '057 - Video Player',
+		design: '057',
+		description: `Design a video play with all the functions needed: volume, skip, fast forward, etc. Depending on the device you'll want to consider different needs such as inputs for a TV (HDMI 1, etc.) or hover effects for a remote cursor.`,
+	},
+	{
+		name: '058 - Shopping cart',
+		design: '058',
+		description: `Some brands use a cart or bag during their checkout process. Consider the products, prices, and placement of any other required data. Do people need to create an account? Checkout as a guest? Is there shipping?`,
+	},
+	{
+		name: '059 - Background Pattern',
+		design: '059',
+		description: `Whether an e-commerce site, a blogs, or a landing page, backgrounds are often unnoticed. How can you design a useful and beautiful one? Video background? Moving patterns or textures? You decide.`,
+	},
+	{
+		name: '060 - Color Picker',
+		design: '060',
+		description: `What is the user doing? Designing a website? Selecting a t-shirt color? Colors are an important part of product design and making it simple to select great color schemes is crucial.`,
+	},
+	{
+		name: '061 - Redeem Coupon',
+		design: '061',
+		description: `Imagine that it's time for someone to redeem a coupon. It could be via an in person self-checkout screen or on a website. Think about the requirements of a coupon such as the discount percentage, the subtotal, total, and other unique features. Always make it easy. The last thing people want to encounter is a complex interface that adds friction to the redemption process.`,
+	},
 ];
