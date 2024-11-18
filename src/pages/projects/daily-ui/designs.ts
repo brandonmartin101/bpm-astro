@@ -310,4 +310,69 @@ export const designs: Design[] = [
 		design: '061',
 		description: `Imagine that it's time for someone to redeem a coupon. It could be via an in person self-checkout screen or on a website. Think about the requirements of a coupon such as the discount percentage, the subtotal, total, and other unique features. Always make it easy. The last thing people want to encounter is a complex interface that adds friction to the redemption process.`,
 	},
+	{
+		name: '062 - Sign Up Form',
+		design: '062',
+		description: `Create a sign up page, modal, form, or app screen related to signing up for something. It could be for a volunteer event, contest registration, a giveaway, or anything you can image.`,
+	},
+	{
+		name: '063 - Best Of',
+		design: '063',
+		description: `“Best of” lists can be used for featured news articles, “best of …” city magazines, top selling products, best selling books, etc. What's best, why, and how will you display it?`,
+	},
+	{
+		name: '064 - User Selection',
+		design: '064',
+		description: `Create a modal, page, toggle, or some other element to represent the selection of a user profile. It could be inside a video app, managing multiple social media accounts, a video game, or something totally unique.`,
+	},
+	{
+		name: '065 - Notes Widget',
+		design: '065',
+		description: `We all need to record a note at some point. Whether it's a full page document, a small shopping list, or a note inside of an app. Create a widget to incorporate a notes feature.`,
+	},
+	{
+		name: '066 - Statistics',
+		design: '066',
+		description: `Applications used for finance, engineering, sports, and even video games have tons of statistics. Design something to show off the top statistics.`,
+	},
+	{
+		name: '067 - Hotel or Vacation Rental Booking',
+		design: '067',
+		description: `Create a website, listing page, or booking reservation UI for a vacation property. Consider extra elements: non-smoking rooms, security deposits, amenities, etc.`,
+	},
+	{
+		name: '068 - Flight Search',
+		design: '068',
+		description: `Design an app or website for either searching for flights or comparing options. Consider the variables: one-way, roundtrip, or multi-stop flight? Baggage fees? Making a lot of data look simple isn't easy, but it's what your users will appreciate. Millions of people travel everyday so every little detail makes a difference.`,
+	},
+	{
+		name: '069 - Trending',
+		design: '069',
+		description: `Create a trending list or feature. What's trending? Music, movies, stock prices, or something else? Think about if it'll be the main focus or a minimal element such as a scrolling banner or notification widget.`,
+	},
+	{
+		name: '070 - Event Listing',
+		design: '070',
+		description: `Design a feature or display for upcoming events. Concerts, workshops, summer camps, seminars, or other training events. Get creative with the purpose and style.`,
+	},
+	{
+		name: '071 - Scheduling',
+		design: '071',
+		description: `Design elements or a full experience for a schedule. It could be for a hospital to schedule patients, a bank to schedule payments, a band's concert schedule or anything.`,
+	},
+	{
+		name: '072 - Slider',
+		design: '072',
+		description: `Create a slider design. It could be to swipe between photos in a property listing app, dating profiles, display album artwork, or a traditional slider for volume or settings.`,
+	},
+	{
+		name: '073 - Virtual Reality',
+		design: '073',
+		description: `A headset, a screen, or the virtual controls required. Small screen real estate requires more hand gestures so be intuitive.`,
+	},
+	{
+		name: '074 - App Download',
+		design: '074',
+		description: `Create a download page, modal, form, or  screen related to downloading something. It could be for a volunteer event, contest registration, or anything you can image requiring a download.`,
+	},
 ];
