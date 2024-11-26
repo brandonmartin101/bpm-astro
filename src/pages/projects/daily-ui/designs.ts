@@ -375,4 +375,134 @@ export const designs: Design[] = [
 		design: '074',
 		description: `Create a download page, modal, form, or  screen related to downloading something. It could be for a volunteer event, contest registration, or anything you can image requiring a download.`,
 	},
+	{
+		name: '075 - Pre-Order',
+		design: '075',
+		description: `Design a page or element to encourage pre-orders for something. It could be an upcoming book, movie, website template, etc.`,
+	},
+	{
+		name: '076 - Loading',
+		design: '076',
+		description: `What's loading? It could be a website, a movie buffering, or a super fun animation for a video game loading.`,
+	},
+	{
+		name: '077 - Thank You (Page or Message)',
+		design: '077',
+		description: `Thank users for downloading your app or a free eBook. Your design can be simple or funny with a GIF. :)`,
+	},
+	{
+		name: '078 - Invitation',
+		design: '078',
+		description: `Invite a person or team to something. It could be a wedding, a product launch party, or to join a new website.`,
+	},
+	{
+		name: '079 - Itinerary',
+		design: '079',
+		description: `A packing list for Disneyland or summer camp, a course outline to learn coding, or anything. What's the purpose and what do the students or attendees need?`,
+	},
+	{
+		name: '080 - Date Picker',
+		design: '080',
+		description: `Create a date picker for anything. You could make it look simple or give it a wild theme.`,
+	},
+	{
+		name: '081 - Status Update',
+		design: '081',
+		description: `Design a status update. It could be for a notification bar, a progress indicator for a download that's complete, or something else.`,
+	},
+	{
+		name: '082 - Form',
+		design: '082',
+		description: `Forms are a vital component for websites. People sign up to attend courses, to register for courses, complete surveys, and so much more. Making the forms beautiful will help encourage people to complete them. Don't overload them with too much information at once, but let them progress in small stages.`,
+	},
+	{
+		name: '083 - Button',
+		design: '083',
+		description: `Buttons are so simple, yet can be so fun to create. Gradients, hover interactions, pulsing elements, sparkles, etc. There's an entire world of unique buttons to explore.`,
+	},
+	{
+		name: '084 - ',
+		design: '084',
+		description: ``,
+	},
+	{
+		name: '085 - ',
+		design: '085',
+		description: ``,
+	},
+	{
+		name: '086 - ',
+		design: '086',
+		description: ``,
+	},
+	{
+		name: '087 - ',
+		design: '087',
+		description: ``,
+	},
+	{
+		name: '088 - ',
+		design: '088',
+		description: ``,
+	},
+	{
+		name: '089 - ',
+		design: '089',
+		description: ``,
+	},
+	{
+		name: '090 - ',
+		design: '090',
+		description: ``,
+	},
+	{
+		name: '091 - ',
+		design: '091',
+		description: ``,
+	},
+	{
+		name: '092 - ',
+		design: '092',
+		description: ``,
+	},
+	{
+		name: '093 - ',
+		design: '093',
+		description: ``,
+	},
+	{
+		name: '094 - ',
+		design: '094',
+		description: ``,
+	},
+	{
+		name: '095 - ',
+		design: '095',
+		description: ``,
+	},
+	{
+		name: '096 - ',
+		design: '096',
+		description: ``,
+	},
+	{
+		name: '097 - ',
+		design: '097',
+		description: ``,
+	},
+	{
+		name: '098 - ',
+		design: '098',
+		description: ``,
+	},
+	{
+		name: '099 - ',
+		design: '099',
+		description: ``,
+	},
+	{
+		name: '100 - ',
+		design: '100',
+		description: ``,
+	},
 ];
