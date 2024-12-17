@@ -496,13 +496,13 @@ export const designs: Design[] = [
 		description: `Not everyone likes seeing ads, but they're crucial for some products. Funny ads or inspiring ones tend to be remembered. Think of the products being offered and their intended audience.`,
 	},
 	{
-		name: '099 - ',
+		name: '099 - Categories',
 		design: '099',
-		description: ``,
+		description: `Design a way to display different things such as people, photos, plants, products, etc. into different categories.`,
 	},
 	{
-		name: '100 - ',
+		name: '100 - Redesign Daily UI',
 		design: '100',
-		description: ``,
+		description: `What would you change about the homepage? Or the design prompts? You could also redesign anything you'd like. :) You've made it to day 100, but what's next? 😏`,
 	},
 ];
