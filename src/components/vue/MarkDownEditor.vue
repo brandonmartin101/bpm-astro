@@ -23,13 +23,13 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import MarkdownIt from 'markdown-it';
+import markdownit from 'markdown-it';
 
 const props = defineProps<{
 	exampleMarkdown?: string;
 }>();
 
-const md = new MarkdownIt({
+const md = markdownit({
 	html: true,
 	linkify: true,
 	typographer: true,

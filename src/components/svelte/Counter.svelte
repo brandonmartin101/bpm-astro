@@ -1,8 +1,9 @@
 <!-- @component
-A counter written with Svelte
+A counter written with Svelte (Svelte 5)
 -->
 <script lang="ts">
-	let count = 0;
+	let { children } = $props();
+	let count = $state(0);
 
 	function add() {
 		count += 1;
@@ -14,10 +15,10 @@ A counter written with Svelte
 </script>
 
 <div class="counter">
-	<button on:click={subtract}>-</button>
+	<button onclick={subtract}>-</button>
 	<pre>{count}</pre>
-	<button on:click={add}>+</button>
+	<button onclick={add}>+</button>
 </div>
 <div class="counter-message">
-	<slot />
+	{@render children?.()}
 </div>

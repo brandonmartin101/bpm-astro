@@ -9,8 +9,13 @@ import netlify from '@astrojs/netlify';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://brandonmartin.dev',
-	integrations: [react(), svelte(), vue(), solid(), sitemap()],
+	integrations: [
+		react({ include: ['**/react/**'] }),
+		svelte(),
+		vue(),
+		solid({ include: ['**/solid/**'] }),
+		sitemap(),
+	],
 	output: 'server',
 	adapter: netlify(),
-	viewTransitions: true,
 });

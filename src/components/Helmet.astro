@@ -1,5 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
 const { title, favicon, addScript } = Astro.props;
 ---
 
@@ -19,5 +18,4 @@ const { title, favicon, addScript } = Astro.props;
 	<meta name='twitter:card' content='summary_large_image' />
 	<link rel='sitemap' href='/sitemap-index.xml' />
 	<script src={addScript}></script>
-	<!-- <ViewTransitions fallback='animate' /> -->
 </head>
