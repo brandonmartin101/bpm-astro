@@ -2,15 +2,48 @@
 import Socials from './Socials.astro';
 ---
 
-<!-- <footer class='footer' transition:persist> -->
 <footer class='footer'>
 	<span class='tools-attribution' hidden
 		>Built with <a href='https://astro.build/' target='_blank' rel='noopener noreferrer'>Astro</a></span
 	>
 	<Socials />
-	<!-- TODO: Add theme switcher / dark mode -->
-	<button class='theme-switcher' hidden>Change Theme</button>
+	<button class='theme-switcher' id='theme-toggle' aria-label='Toggle dark mode'>
+		<svg class='icon-sun' id='icon-sun' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='5'/><line x1='12' y1='1' x2='12' y2='3'/><line x1='12' y1='21' x2='12' y2='23'/><line x1='4.22' y1='4.22' x2='5.64' y2='5.64'/><line x1='18.36' y1='18.36' x2='19.78' y2='19.78'/><line x1='1' y1='12' x2='3' y2='12'/><line x1='21' y1='12' x2='23' y2='12'/><line x1='4.22' y1='19.78' x2='5.64' y2='18.36'/><line x1='18.36' y1='5.64' x2='19.78' y2='4.22'/></svg>
+		<svg class='icon-moon' id='icon-moon' xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/></svg>
+	</button>
 </footer>
+
+<script is:inline>
+	const STORAGE_KEY = 'theme';
+	const html = document.documentElement;
+
+	function getPreferredTheme() {
+		const stored = localStorage.getItem(STORAGE_KEY);
+		if (stored) return stored;
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	}
+
+	function syncIcons(theme) {
+		const sun = document.getElementById('icon-sun');
+		const moon = document.getElementById('icon-moon');
+		if (sun) sun.style.display = theme === 'dark' ? 'none' : 'block';
+		if (moon) moon.style.display = theme === 'dark' ? 'block' : 'none';
+	}
+
+	function setTheme(theme) {
+		html.setAttribute('data-theme', theme);
+		localStorage.setItem(STORAGE_KEY, theme);
+		syncIcons(theme);
+	}
+
+	const current = getPreferredTheme();
+	setTheme(current);
+
+	document.getElementById('theme-toggle').onclick = () => {
+		const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+		setTheme(next);
+	};
+</script>
 
 <style>
 	.footer {
@@ -25,19 +58,17 @@ import Socials from './Socials.astro';
 	}
 
 	.footer .theme-switcher {
-		color: transparent;
 		background: transparent;
 		border: none;
-		font-size: 0;
-		width: 20px;
-		height: 20px;
+		cursor: pointer;
+		color: var(--color, #111);
+		display: flex;
+		align-items: center;
+		padding: 4px;
+		margin-left: 1rem;
 	}
 	.footer .theme-switcher:hover {
-		color: black;
-	}
-	.footer .theme-switcher,
-	.footer .night-switcher {
-		flex: 0;
+		opacity: 0.7;
 	}
 	.footer .tools-attribution {
 		flex: 1 1;

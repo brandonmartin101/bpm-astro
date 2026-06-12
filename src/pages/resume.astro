@@ -1,0 +1,39 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+---
+
+<PageLayout title='Resume'>
+	<article class='content'>
+		<h1>Resume</h1>
+		<p class='fallback'>
+			If the resume doesn't load below, you can
+			<a href='https://resume.brandonmartin.dev' target='_blank' rel='noopener noreferrer'>view it directly</a>.
+		</p>
+		<iframe
+			src='https://resume.brandonmartin.dev'
+			class='resume-iframe'
+			title='Brandon Martin Resume'
+			loading='lazy'
+		></iframe>
+	</article>
+</PageLayout>
+
+<style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex: 1;
+	}
+	.fallback {
+		margin-bottom: 1rem;
+		font-size: 0.9rem;
+	}
+	.resume-iframe {
+		width: 100%;
+		max-width: 900px;
+		height: 80vh;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+</style>

@@ -2,15 +2,22 @@
 import PageLayout from '../layouts/PageLayout.astro';
 ---
 
-<PageLayout title='Web Developer and GENIUS'>
+<PageLayout title='Full-Stack Web Developer'>
 	<article class='content'>
 		<h1 class='title'>Brandon Martin</h1>
 		<h2 class='subtitle h4'>
-			Web Developer and <span class='special'>GENIUS</span>
+			Full-Stack Web Developer
 		</h2>
-		<p>
-			Need a website?<br />Have a broken website that needs fixed?<br /><br />I can help.
+		<p class='bio'>
+			Building fast, accessible, and maintainable web applications since 2014.
+			I work across the stack with <strong>Laravel</strong> and <strong>Vue</strong> on the front-to-back,
+			<strong>React</strong> for rich interactive UIs, and <strong>.NET</strong> for enterprise-grade APIs and services.
+			I'm currently open to new opportunities — let's build something great together.
 		</p>
+		<div class='ctas'>
+			<a href='/projects' class='cta'>View My Work</a>
+			<a href='mailto:brandon.martin101@gmail.com' class='cta cta-secondary'>Get in Touch</a>
+		</div>
 	</article>
 </PageLayout>
 
@@ -19,6 +26,36 @@ import PageLayout from '../layouts/PageLayout.astro';
 		margin-top: 3rem;
 	}
 	.subtitle {
-		margin-bottom: 3rem;
+		margin-bottom: 1rem;
+	}
+	.bio {
+		max-width: 600px;
+		margin: 0 auto 2rem;
+		line-height: 1.7;
+	}
+	.ctas {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.cta {
+		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		border: 2px solid green;
+		border-radius: 6px;
+		font-weight: 600;
+		transition: background 0.2s, color 0.2s;
+	}
+	.cta:hover {
+		background: green;
+		color: #fff;
+	}
+	.cta-secondary {
+		border-color: #333;
+	}
+	.cta-secondary:hover {
+		background: #333;
+		color: #fff;
 	}
 </style>

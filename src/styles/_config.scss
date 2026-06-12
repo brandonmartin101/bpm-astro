@@ -7,9 +7,9 @@
   font-display: swap;
 }
 
-$color: #111;
-$background: #fff;
-$special: green;
+$color: var(--color);
+$background: var(--background);
+$special: var(--special);
 
 $font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, avenir next,
   avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto,

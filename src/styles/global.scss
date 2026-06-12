@@ -1,6 +1,19 @@
 @use 'reset';
 @use 'config';
 
+:root {
+	color-scheme: light dark;
+	--color: #111;
+	--background: #fff;
+	--special: #2e7d32;
+}
+
+[data-theme='dark'] {
+	--color: #e0e0e0;
+	--background: #1a1a1a;
+	--special: #4caf50;
+}
+
 * {
 	scrollbar-width: thin;
 }

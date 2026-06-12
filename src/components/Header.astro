@@ -1,9 +1,7 @@
 ---
 const { logo } = Astro.props;
-const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.js`;
 ---
 
-<!-- <header class='header' transition:persist> -->
 <header class='header'>
 	<div class='logo-wrapper'>
 		<a href='/' class='nav-link'>
@@ -16,15 +14,8 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 			<li><a href='/about' class='nav-link'>/about</a></li>
 			<li><a href='/projects' class='nav-link'>/projects</a></li>
 			<li><a href='/uses' class='nav-link'>/uses</a></li>
-			<!-- <li><a href='/now' class='nav-link'>/now</a></li> -->
 		</ul>
 	</nav>
-	<canvas class='background'></canvas>
-	<script is:inline src={miniGL}></script>
-	<script is:inline>
-		const gradient = new Gradient();
-		gradient.initGradient('.background');
-	</script>
 </header>
 
 <style>
@@ -43,6 +34,19 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 		padding: 0 20px;
 		overflow: hidden;
 		position: relative;
+		@media (max-width: 600px) {
+			& {
+				font-size: 1rem;
+				padding: 0 12px;
+			}
+		}
+	}
+	.header::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: linear-gradient(to right, #158a15, #4805ba);
 	}
 	a,
 	a:focus,
@@ -51,23 +55,14 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 		color: white;
 	}
 	ul {
-		display: inline-block;
-		column-count: 3;
-		@media (max-width: 900px) {
+		display: flex;
+		flex-direction: row;
+		gap: 12px;
+		@media (max-width: 600px) {
 			& {
-				column-count: 2;
+				flex-direction: column;
+				gap: 4px;
 			}
-		}
-		@media (max-width: 450px) {
-			& {
-				column-count: 1;
-			}
-		}
-	}
-
-	@media (max-width: 450px) {
-		ul {
-			column-count: 1;
 		}
 	}
 	li {
@@ -82,20 +77,5 @@ const miniGL = `https://cdn.jsdelivr.net/gh/greentfrapp/pocoloco@minigl/minigl.j
 		max-width: 80px;
 		max-height: 80px;
 		height: 80px;
-	}
-	.background {
-		z-index: 0;
-		position: absolute;
-		inset: 0;
-		width: 100%;
-		height: 100%;
-		max-height: 100%;
-		transform: rotate(0deg) scale(2) translateY(0%);
-		background: #4805ba;
-		--gradient-color-1: #4805ba;
-		--gradient-color-2: #f728f3;
-		--gradient-color-3: #158a15;
-		--gradient-color-4: #305995;
-		--gradient-speed: 0.000006;
 	}
 </style>

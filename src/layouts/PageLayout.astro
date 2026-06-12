@@ -11,11 +11,10 @@ const logoSeed = Math.floor(Math.random() * 20);
 const logo = `/avatars/avatar-${logoSeed}.svg`;
 ---
 
-<html lang='en' data-theme='light'>
+<html lang='en' data-theme='light' transition:persist>
 	<Helmet title={`Brandon Martin | ${title}`} favicon={logo} addScript={addScript} />
 	<body>
 		<Header logo={logo} />
-		<!-- <main class='main' transition:name='main' transition:animate='fade'> -->
 		<main class='main'>
 			<slot />
 		</main>
