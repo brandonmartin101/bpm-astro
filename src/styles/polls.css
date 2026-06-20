@@ -45,7 +45,7 @@
 	overflow: hidden;
 }
 .poll-option-progress-bar-inner {
-	background: #ccc;
+	background: var(--border-color);
 	height: 100%;
 }
 

@@ -9,7 +9,12 @@ const { logo } = Astro.props;
 			<p class='white'>Brandon Martin</p>
 		</a>
 	</div>
-	<nav class='navigation'>
+	<button class='hamburger' id='hamburger' aria-label='Toggle navigation'>
+		<span class='hamburger-line'></span>
+		<span class='hamburger-line'></span>
+		<span class='hamburger-line'></span>
+	</button>
+	<nav class='navigation' id='navigation'>
 		<ul>
 			<li><a href='/about' class='nav-link'>/about</a></li>
 			<li><a href='/projects' class='nav-link'>/projects</a></li>
@@ -17,6 +22,25 @@ const { logo } = Astro.props;
 		</ul>
 	</nav>
 </header>
+
+<script is:inline>
+	const hamburger = document.getElementById('hamburger');
+	const navigation = document.getElementById('navigation');
+
+	if (hamburger && navigation) {
+		hamburger.addEventListener('click', () => {
+			navigation.classList.toggle('open');
+			hamburger.classList.toggle('open');
+		});
+
+		navigation.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				navigation.classList.remove('open');
+				hamburger.classList.remove('open');
+			});
+		});
+	}
+</script>
 
 <style>
 	.header {
@@ -32,7 +56,6 @@ const { logo } = Astro.props;
 		font-weight: bold;
 		margin: 0;
 		padding: 0 20px;
-		overflow: hidden;
 		position: relative;
 		@media (max-width: 600px) {
 			& {
@@ -58,24 +81,79 @@ const { logo } = Astro.props;
 		display: flex;
 		flex-direction: row;
 		gap: 12px;
-		@media (max-width: 600px) {
-			& {
-				flex-direction: column;
-				gap: 4px;
-			}
-		}
+		margin: 0;
+		padding: 0;
 	}
 	li {
 		list-style-type: none;
 	}
-	.logo-wrapper,
+	.logo-wrapper {
+		z-index: 2;
+	}
 	.navigation {
-		z-index: 1;
+		z-index: 2;
 	}
 	.logo {
 		margin: 0 auto;
 		max-width: 80px;
 		max-height: 80px;
 		height: 80px;
+	}
+	.hamburger {
+		display: none;
+		z-index: 2;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 8px;
+		flex-direction: column;
+		gap: 5px;
+	}
+	.hamburger-line {
+		display: block;
+		width: 24px;
+		height: 3px;
+		background: white;
+		border-radius: 2px;
+		transition: transform 0.3s, opacity 0.3s;
+	}
+	.hamburger.open .hamburger-line:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
+	.hamburger.open .hamburger-line:nth-child(2) {
+		opacity: 0;
+	}
+	.hamburger.open .hamburger-line:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
+	@media (max-width: 600px) {
+		.hamburger {
+			display: flex;
+		}
+		.navigation {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background: #222;
+			overflow: hidden;
+			max-height: 0;
+			transition: max-height 0.3s ease;
+		}
+		.navigation.open {
+			max-height: 200px;
+		}
+		.navigation ul {
+			flex-direction: column;
+			gap: 0;
+			padding: 10px 0;
+		}
+		.navigation li {
+			text-align: center;
+		}
+		.navigation a {
+			display: block;
+			padding: 8px 0;
+		}
 	}
 </style>

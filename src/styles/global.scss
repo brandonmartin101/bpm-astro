@@ -6,12 +6,14 @@
 	--color: #111;
 	--background: #fff;
 	--special: #2e7d32;
+	--border-color: #ccc;
 }
 
 [data-theme='dark'] {
 	--color: #e0e0e0;
 	--background: #1a1a1a;
 	--special: #4caf50;
+	--border-color: #444;
 }
 
 * {
