@@ -2,17 +2,17 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const tools = [
-	{ name: 'Live Poll', href: '/projects/live-poll/about', desc: 'Real-time polling app with Vue + PartyKit WebSockets' },
-	{ name: 'Markdown Editor', href: '/projects/markdown-editor', desc: 'Live preview markdown editor built with Vue' },
-	{ name: 'Drum Machine', href: '/projects/drum-machine', desc: 'Interactive drum machine with keyboard controls' },
-	{ name: 'Drawing Pad', href: '/projects/drawing-pad', desc: 'Browser-based canvas drawing app' },
+	{ name: 'Live Poll', href: '/projects/live-poll/about', desc: 'Real-time polling app with Vue + PartyKit WebSockets', tags: ['Vue', 'PartyKit', 'WebSockets'] },
+	{ name: 'Markdown Editor', href: '/projects/markdown-editor', desc: 'Live preview markdown editor built with Vue', tags: ['Vue'] },
+	{ name: 'Drum Machine', href: '/projects/drum-machine', desc: 'Interactive drum machine with keyboard controls', tags: ['Canvas', 'Tone.js', 'JavaScript'] },
+	{ name: 'Drawing Pad', href: '/projects/drawing-pad', desc: 'Browser-based canvas drawing app', tags: ['Canvas', 'JavaScript'] },
 ];
 
 const games = [
-	{ name: 'Space Game', href: '/projects/space-game', desc: 'Asteroid evasion game built with HTML Canvas' },
-	{ name: 'Tic-Tac-Toe', href: '/projects/tic-tac-toe', desc: 'Classic tic-tac-toe with customizable board' },
-	{ name: 'Typer Ain', href: '/projects/typer-ain', desc: 'Typing game where letters fall like rain' },
-	{ name: 'Memory', href: '/projects/memory', desc: 'Classic memory card matching game' },
+	{ name: 'Space Game', href: '/projects/space-game', desc: 'Asteroid evasion game built with HTML Canvas', tags: ['Canvas', 'JavaScript'] },
+	{ name: 'Tic-Tac-Toe', href: '/projects/tic-tac-toe', desc: 'Classic tic-tac-toe with customizable board', tags: ['JavaScript'] },
+	{ name: 'Typer Ain', href: '/projects/typer-ain', desc: 'Typing game where letters fall like rain', tags: ['Canvas', 'JavaScript'] },
+	{ name: 'Memory', href: '/projects/memory', desc: 'Classic memory card matching game', tags: ['JavaScript'] },
 ];
 ---
 
@@ -23,10 +23,11 @@ const games = [
 	<section class='section'>
 		<h2>Tools</h2>
 		<div class='grid'>
-			{tools.map(({ name, href, desc }) => (
+			{tools.map(({ name, href, desc, tags }) => (
 				<a href={href} class='card'>
 					<h3>{name}</h3>
 					<p>{desc}</p>
+					<div class='tags'>{tags.map(tag => <span class='tag'>{tag}</span>)}</div>
 				</a>
 			))}
 		</div>
@@ -35,10 +36,11 @@ const games = [
 	<section class='section'>
 		<h2>Games</h2>
 		<div class='grid'>
-			{games.map(({ name, href, desc }) => (
+			{games.map(({ name, href, desc, tags }) => (
 				<a href={href} class='card'>
 					<h3>{name}</h3>
 					<p>{desc}</p>
+					<div class='tags'>{tags.map(tag => <span class='tag'>{tag}</span>)}</div>
 				</a>
 			))}
 		</div>
@@ -77,9 +79,24 @@ const games = [
 		font-size: 1.2rem;
 	}
 	.card p {
-		margin: 0;
+		margin: 0 0 0.75rem;
 		font-size: 0.9rem;
 		line-height: 1.5;
 		opacity: 0.8;
+	}
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+		margin-top: auto;
+	}
+	.tag {
+		display: inline-block;
+		padding: 2px 10px;
+		border-radius: 999px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		background: var(--special);
+		color: #fff;
 	}
 </style>
