@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/timer"
+  to = "/projects/toddler-timer/"
+  status = 200
