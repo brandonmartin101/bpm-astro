@@ -52,7 +52,7 @@
         <img :src="currentImage" alt="" class="timer-image" />
         <div class="reveal-overlay" :style="overlayStyle"></div>
       </div>
-      <div class="time-display" :class="{ urgent: remaining <= 10 }">
+      <div class="time-display" :class="{ urgent: displaySecs <= 10 }">
         {{ formatted }}
       </div>
       <button class="cancel-btn" @click="cancel">Cancel</button>
@@ -113,9 +113,11 @@ let masterGain = null
 let rafId = null
 let startTime = 0
 
+const displaySecs = computed(() => Math.ceil(remaining.value))
+
 const progress = computed(() => {
   if (total.value === 0) return 0
-  return remaining.value / total.value
+  return displaySecs.value / total.value
 })
 
 const overlayStyle = computed(() => {
@@ -129,8 +131,9 @@ const overlayStyle = computed(() => {
 const currentImage = computed(() => currentImageUrl.value)
 
 const formatted = computed(() => {
-  const m = Math.floor(remaining.value / 60)
-  const s = remaining.value % 60
+  const secs = displaySecs.value
+  const m = Math.floor(secs / 60)
+  const s = secs % 60
   return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
 })
 
@@ -268,8 +271,62 @@ onUnmounted(() => {
 .toddler-timer {
   max-width: 500px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 2rem 1.5rem;
   font-family: inherit;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,204,2,0.25) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(255,112,67,0.2) 0%, transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(206,147,216,0.2) 0%, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(100,181,246,0.2) 0%, transparent 45%),
+    linear-gradient(135deg, #FFF8E1, #F3E5F5, #E1F5FE);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.toddler-timer::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  background: #FFCC02;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.toddler-timer::after {
+  content: '';
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  background: #FF7043;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+[data-theme='dark'] .toddler-timer {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,204,2,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(255,112,67,0.15) 0%, transparent 45%),
+    radial-gradient(circle at 20% 80%, rgba(206,147,216,0.15) 0%, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(100,181,246,0.15) 0%, transparent 45%),
+    linear-gradient(135deg, #2D2432, #242D3A, #2D2D2D);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+[data-theme='dark'] .toddler-timer::before {
+  background: #FFCC02;
+  opacity: 0.3;
+}
+
+[data-theme='dark'] .toddler-timer::after {
+  background: #FF7043;
+  opacity: 0.25;
 }
 
 /* Home screen */
