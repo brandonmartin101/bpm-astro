@@ -49,10 +49,10 @@
                 @keyup.enter="startCustom"
               />
             </div>
-            <button class="start-btn" :disabled="customSeconds == null" @click="startCustom">
+            <button class="start-btn" :disabled="customTotalSecs <= 0" @click="startCustom">
               Start
             </button>
-            <button class="save-preset-btn" :disabled="customSeconds == null" @click="addPreset" title="Save preset">+</button>
+            <button class="save-preset-btn" :disabled="customTotalSecs <= 0" @click="addPreset" title="Save preset">+</button>
           </div>
         </div>
       </div>
@@ -176,6 +176,12 @@ let rafId = null
 let tickIntervalId = null
 let startTime = 0
 
+const customTotalSecs = computed(() => {
+  const mins = customMinutes.value || 0
+  const secs = customSeconds.value || 0
+  return mins * 60 + secs
+})
+
 const displaySecs = computed(() => Math.ceil(remaining.value))
 
 const progress = computed(() => {
@@ -270,9 +276,7 @@ function startTimer(seconds) {
 }
 
 function startCustom() {
-  const mins = customMinutes.value || 0
-  const secs = customSeconds.value || 0
-  const totalSecs = mins * 60 + secs
+  const totalSecs = customTotalSecs.value
   if (totalSecs > 0) startTimer(totalSecs)
 }
 
