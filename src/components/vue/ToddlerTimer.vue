@@ -7,13 +7,21 @@
 
         <div class="presets">
           <button
-            v-for="preset in presets"
-            :key="preset"
+            v-for="(preset, i) in presets"
+            :key="i"
             class="preset-btn"
             :style="{ background: presetColor(preset) }"
             @click="startTimer(preset * 60)"
           >
-            {{ preset }} min
+            {{ formatPreset(preset) }}
+            <span v-if="editing" class="preset-delete" @click.stop="deletePreset(i)">&times;</span>
+          </button>
+          <button
+            class="edit-btn"
+            @click="editing = !editing"
+            :class="{ active: editing }"
+          >
+            {{ editing ? 'Done' : 'Edit' }}
           </button>
         </div>
 
@@ -44,6 +52,7 @@
             <button class="start-btn" :disabled="customSeconds == null" @click="startCustom">
               Start
             </button>
+            <button class="save-preset-btn" :disabled="customSeconds == null" @click="addPreset" title="Save preset">+</button>
           </div>
         </div>
       </div>
@@ -71,7 +80,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const images = [
   '/images/toddler-timer/corgi-puppy.jpg',
@@ -99,9 +108,61 @@ const images = [
   '/images/toddler-timer/toy-duck.jpg',
 ]
 
+const STORAGE_KEY = 'toddler-timer-presets'
+const defaults = [1, 2, 5, 10, 30]
 const presetColors = ['#FF7043', '#66BB6A', '#42A5F5', '#AB47BC', '#FFA726']
 
-const presets = [1, 2, 5, 10, 30]
+const presets = ref([])
+const editing = ref(false)
+
+function savePresets() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(presets.value))
+}
+
+function loadPresets() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY)
+    if (raw) {
+      const arr = JSON.parse(raw)
+      if (Array.isArray(arr) && arr.length > 0) {
+        presets.value = arr.filter(p => typeof p === 'number' && p > 0).sort((a, b) => a - b)
+        return
+      }
+    }
+  } catch { }
+  presets.value = [...defaults]
+  savePresets()
+}
+
+function addPreset() {
+  const mins = customMinutes.value || 0
+  const secs = customSeconds.value || 0
+  const totalMins = mins + secs / 60
+  if (totalMins <= 0) return
+  if (presets.value.some(p => Math.abs(p - totalMins) < 0.01)) return
+  presets.value.push(totalMins)
+  presets.value.sort((a, b) => a - b)
+  savePresets()
+  customMinutes.value = null
+  customSeconds.value = null
+}
+
+function deletePreset(index) {
+  presets.value.splice(index, 1)
+  if (presets.value.length === 0) {
+    presets.value = [...defaults]
+  }
+  savePresets()
+}
+
+function formatPreset(minutes) {
+  if (Number.isInteger(minutes)) return `${minutes} min`
+  const m = Math.floor(minutes)
+  const s = Math.round((minutes - m) * 60)
+  return `${m}:${String(s).padStart(2, '0')}`
+}
+
+onMounted(loadPresets)
 
 const screen = ref('home')
 const total = ref(0)
@@ -277,6 +338,7 @@ onUnmounted(() => {
 
 <style scoped>
 .toddler-timer {
+  width: 100%;
   max-width: 500px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
@@ -390,6 +452,7 @@ onUnmounted(() => {
   transition: transform 0.15s, box-shadow 0.15s;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   min-width: 100px;
+  position: relative;
 }
 
 .preset-btn:hover {
@@ -399,6 +462,74 @@ onUnmounted(() => {
 
 .preset-btn:active {
   transform: translateY(0) scale(0.97);
+}
+
+.preset-delete {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ef5350;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  line-height: 1;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.edit-btn {
+  border: 2px dashed var(--border-color, #ccc);
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--color, #111);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  min-width: 70px;
+  opacity: 0.7;
+}
+
+.edit-btn:hover {
+  background: rgba(0,0,0,0.05);
+  opacity: 1;
+}
+
+.edit-btn.active {
+  border-style: solid;
+  border-color: #ef5350;
+  opacity: 1;
+}
+
+[data-theme='dark'] .edit-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.save-preset-btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #AB47BC, #CE93D8);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.save-preset-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .custom-section {
