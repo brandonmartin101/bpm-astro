@@ -19,13 +19,28 @@
       <div class="custom-section">
         <p class="custom-label">Or enter a custom time</p>
         <div class="custom-row">
-          <input
-            v-model="customInput"
-            class="custom-input"
-            placeholder="mm:ss"
-            @keyup.enter="startCustom"
-          />
-          <button class="start-btn" :disabled="!customInput" @click="startCustom">
+          <div class="custom-inputs">
+            <input
+              v-model.number="customMinutes"
+              type="number"
+              min="0"
+              max="999"
+              class="custom-input"
+              placeholder="mm"
+              @keyup.enter="startCustom"
+            />
+            <span class="custom-sep">:</span>
+            <input
+              v-model.number="customSeconds"
+              type="number"
+              min="0"
+              max="59"
+              class="custom-input custom-input-sec"
+              placeholder="ss"
+              @keyup.enter="startCustom"
+            />
+          </div>
+          <button class="start-btn" :disabled="customSeconds == null" @click="startCustom">
             Start
           </button>
         </div>
@@ -57,18 +72,29 @@
 import { ref, computed, onUnmounted } from 'vue'
 
 const images = [
-  '/images/toddler-timer/star.svg',
-  '/images/toddler-timer/moon.svg',
-  '/images/toddler-timer/sun.svg',
-  '/images/toddler-timer/rainbow.svg',
-  '/images/toddler-timer/balloon.svg',
-  '/images/toddler-timer/fish.svg',
-  '/images/toddler-timer/butterfly.svg',
-  '/images/toddler-timer/rocket.svg',
-  '/images/toddler-timer/heart.svg',
-  '/images/toddler-timer/tree.svg',
-  '/images/toddler-timer/dinosaur.svg',
-  '/images/toddler-timer/cat.svg',
+  '/images/toddler-timer/corgi-puppy.jpg',
+  '/images/toddler-timer/puppy-dog.jpg',
+  '/images/toddler-timer/kitten.jpg',
+  '/images/toddler-timer/kitten-blue-eyes.jpg',
+  '/images/toddler-timer/bunny-rabbit.jpg',
+  '/images/toddler-timer/panda.jpg',
+  '/images/toddler-timer/red-panda.jpg',
+  '/images/toddler-timer/elephant.jpg',
+  '/images/toddler-timer/giraffe.jpg',
+  '/images/toddler-timer/parrot.jpg',
+  '/images/toddler-timer/butterfly.jpg',
+  '/images/toddler-timer/monarch-butterfly.jpg',
+  '/images/toddler-timer/colorful-fish.jpg',
+  '/images/toddler-timer/rainbow.jpg',
+  '/images/toddler-timer/flowers.jpg',
+  '/images/toddler-timer/balloons.jpg',
+  '/images/toddler-timer/hot-air-balloons.jpg',
+  '/images/toddler-timer/birthday-cake.jpg',
+  '/images/toddler-timer/space-shuttle.jpg',
+  '/images/toddler-timer/rocket.jpg',
+  '/images/toddler-timer/space-planet.jpg',
+  '/images/toddler-timer/dinosaur-skeleton.jpg',
+  '/images/toddler-timer/toy-duck.jpg',
 ]
 
 const presetColors = ['#FF7043', '#66BB6A', '#42A5F5', '#AB47BC', '#FFA726']
@@ -78,7 +104,8 @@ const presets = [1, 2, 5, 10, 30]
 const screen = ref('home')
 const total = ref(0)
 const remaining = ref(0)
-const customInput = ref('')
+const customMinutes = ref(null)
+const customSeconds = ref(null)
 const currentImageUrl = ref('')
 const imageIndex = ref(0)
 let timerId = null
@@ -120,6 +147,7 @@ function pickImage() {
 
 function startTimer(seconds) {
   if (seconds < 1) return
+  initAudio()
   total.value = seconds
   remaining.value = seconds
   pickImage()
@@ -128,16 +156,22 @@ function startTimer(seconds) {
 }
 
 function startCustom() {
-  const val = customInput.value.trim()
-  if (!val) return
-  const parts = val.split(':')
-  let seconds = 0
-  if (parts.length === 2) {
-    seconds = parseInt(parts[0]) * 60 + parseInt(parts[1])
-  } else if (parts.length === 3) {
-    seconds = parseInt(parts[0]) * 3600 + parseInt(parts[1]) * 60 + parseInt(parts[2])
+  const mins = customMinutes.value || 0
+  const secs = customSeconds.value || 0
+  const totalSecs = mins * 60 + secs
+  if (totalSecs > 0) startTimer(totalSecs)
+}
+
+function initAudio() {
+  try {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume()
+    }
+  } catch {
   }
-  if (seconds > 0) startTimer(seconds)
 }
 
 function runTick() {
@@ -168,12 +202,6 @@ function reset() {
 }
 
 function getAudioCtx() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-  }
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume()
-  }
   return audioCtx
 }
 
@@ -297,14 +325,24 @@ onUnmounted(() => {
 
 .custom-row {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   width: 100%;
-  max-width: 300px;
+  max-width: 360px;
+  justify-content: center;
+}
+
+.custom-inputs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .custom-input {
-  flex: 1;
-  padding: 12px 16px;
+  width: 80px;
+  padding: 12px 8px;
   border: 2px solid var(--border-color, #ccc);
   border-radius: 12px;
   font-size: 1.2rem;
@@ -314,6 +352,21 @@ onUnmounted(() => {
   color: var(--color, #111);
   outline: none;
   transition: border-color 0.2s;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.custom-input::-webkit-inner-spin-button,
+.custom-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-sep {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color, #111);
+  line-height: 1;
 }
 
 .custom-input:focus {
@@ -330,6 +383,7 @@ onUnmounted(() => {
   font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s;
+  white-space: nowrap;
 }
 
 .start-btn:disabled {
