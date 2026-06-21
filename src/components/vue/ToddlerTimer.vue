@@ -106,6 +106,28 @@ const images = [
   '/images/toddler-timer/space-planet.jpg',
   '/images/toddler-timer/dinosaur-skeleton.jpg',
   '/images/toddler-timer/toy-duck.jpg',
+  '/images/toddler-timer/penguin.jpg',
+  '/images/toddler-timer/fox.jpg',
+  '/images/toddler-timer/owl.jpg',
+  '/images/toddler-timer/turtle.jpg',
+  '/images/toddler-timer/dolphin.jpg',
+  '/images/toddler-timer/horse.jpg',
+  '/images/toddler-timer/hamster.jpg',
+  '/images/toddler-timer/otter.jpg',
+  '/images/toddler-timer/sloth.jpg',
+  '/images/toddler-timer/koala.jpg',
+  '/images/toddler-timer/hedgehog.jpg',
+  '/images/toddler-timer/squirrel.jpg',
+  '/images/toddler-timer/raccoon.jpg',
+  '/images/toddler-timer/frog.jpg',
+  '/images/toddler-timer/stars-night-sky.jpg',
+  '/images/toddler-timer/beach-ocean.jpg',
+  '/images/toddler-timer/mountains.jpg',
+  '/images/toddler-timer/waterfall.jpg',
+  '/images/toddler-timer/sunset.jpg',
+  '/images/toddler-timer/garden-flowers.jpg',
+  '/images/toddler-timer/ice-cream.jpg',
+  '/images/toddler-timer/candy.jpg',
 ]
 
 const STORAGE_KEY = 'toddler-timer-presets'
@@ -242,8 +264,8 @@ function playTick() {
     osc.type = 'sine'
     osc.frequency.value = 600
     const now = audioCtx.currentTime
-    gain.gain.setValueAtTime(0.08, now)
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05)
+    gain.gain.setValueAtTime(0.25, now)
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08)
     osc.start(now)
     osc.stop(now + 0.05)
   } catch {
@@ -325,8 +347,8 @@ function playMelody() {
       osc.type = 'sine'
       osc.frequency.value = freq
       const start = audioCtx.currentTime + i * 0.2
-      gain.gain.setValueAtTime(0.12, start)
-      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.4)
+      gain.gain.setValueAtTime(0.35, start)
+      gain.gain.exponentialRampToValueAtTime(0.001, start + 0.5)
       osc.start(start)
       osc.stop(start + 0.4)
     })
