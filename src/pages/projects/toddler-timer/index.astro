@@ -1,5 +1,12 @@
 ---
-import PageLayout from '../../../layouts/PageLayout.astro'
+import PageLayout from '../../../layouts/PageLayout.astro';
+import ToddlerTimer from '../../../components/vue/ToddlerTimer.vue';
 ---
 
-<PageLayout title='Toddler Timer' />
+<PageLayout title='Toddler Timer'>
+	<h1>Toddler Timer</h1>
+	<p>
+		A visual countdown timer for toddlers. Pick a time, watch the image reveal itself as the clock counts down.
+	</p>
+	<ToddlerTimer client:load />
+</PageLayout>
