@@ -193,7 +193,7 @@ import PageLayout from '../../../layouts/PageLayout.astro'
     input[type=range]::-webkit-slider-runnable-track {
       width: 300px;
       height: 5px;
-      background: #ccc;
+      background: var(--border-color);
       border: none;
       border-radius: 3px;
     }
@@ -204,7 +204,7 @@ import PageLayout from '../../../layouts/PageLayout.astro'
       height: 16px;
       width: 16px;
       border-radius: 50%;
-      background: #00c;
+      background: var(--special);
       margin-top: -4px;
     }
 
@@ -213,13 +213,13 @@ import PageLayout from '../../../layouts/PageLayout.astro'
     }
 
     input[type=range]:focus::-webkit-slider-runnable-track {
-      background: #ccc;
+      background: var(--border-color);
     }
 
     input[type=range]::-moz-range-track {
       width: 300px;
       height: 5px;
-      background: #ccc;
+      background: var(--border-color);
       border: none;
       border-radius: 3px;
     }
@@ -229,7 +229,7 @@ import PageLayout from '../../../layouts/PageLayout.astro'
       height: 16px;
       width: 16px;
       border-radius: 50%;
-      background: #00c;
+      background: var(--special);
     }
 
     /*hide the outline behind the border*/
@@ -255,12 +255,12 @@ import PageLayout from '../../../layouts/PageLayout.astro'
     }
 
     input[type=range]::-ms-fill-lower {
-      background: #ddd;
+      background: var(--border-color);
       border-radius: 10px;
     }
 
     input[type=range]::-ms-fill-upper {
-      background: #ddd;
+      background: var(--border-color);
       border-radius: 10px;
     }
 
@@ -269,15 +269,15 @@ import PageLayout from '../../../layouts/PageLayout.astro'
       height: 16px;
       width: 16px;
       border-radius: 50%;
-      background: #00c;
+      background: var(--special);
     }
 
     input[type=range]:focus::-ms-fill-lower {
-      background: #ddd;
+      background: var(--border-color);
     }
 
     input[type=range]:focus::-ms-fill-upper {
-      background: #ddd;
+      background: var(--border-color);
     }
 
     .pickr {

@@ -2,18 +2,18 @@
 import PageLayout from '../../layouts/PageLayout.astro';
 
 const tools = [
-	{ name: 'Live Poll', href: '/projects/live-poll/about', desc: 'Real-time polling app with Vue + PartyKit WebSockets', tags: ['Vue', 'PartyKit', 'WebSockets'] },
-	{ name: 'Markdown Editor', href: '/projects/markdown-editor', desc: 'Live preview markdown editor built with Vue', tags: ['Vue'] },
-	{ name: 'Drum Machine', href: '/projects/drum-machine', desc: 'Interactive drum machine with keyboard controls', tags: ['Canvas', 'Tone.js', 'JavaScript'] },
-	{ name: 'Drawing Pad', href: '/projects/drawing-pad', desc: 'Browser-based canvas drawing app', tags: ['Canvas', 'JavaScript'] },
-	{ name: 'Toddler Timer', href: '/timer', desc: 'Visual countdown timer with image reveal, built with Vue', tags: ['Vue'] },
+	{ name: 'Live Poll', href: '/projects/live-poll/about', img: '/images/projects/live-poll.jpg', desc: 'Real-time polling app with Vue + PartyKit WebSockets', tags: ['Vue', 'PartyKit', 'WebSockets'] },
+	{ name: 'Markdown Editor', href: '/projects/markdown-editor', img: '/images/projects/markdown-editor.jpg', desc: 'Live preview markdown editor built with Vue', tags: ['Vue'] },
+	{ name: 'Drum Machine', href: '/projects/drum-machine', img: '/images/projects/drum-machine.jpg', desc: 'Interactive drum machine with keyboard controls', tags: ['Canvas', 'Tone.js', 'JavaScript'] },
+	{ name: 'Drawing Pad', href: '/projects/drawing-pad', img: '/images/projects/drawing-pad.jpg', desc: 'Browser-based canvas drawing app', tags: ['Canvas', 'JavaScript'] },
+	{ name: 'Toddler Timer', href: '/timer', img: '/images/projects/toddler-timer.jpg', desc: 'Visual countdown timer with image reveal, built with Vue', tags: ['Vue'] },
 ];
 
 const games = [
-	{ name: 'Space Game', href: '/projects/space-game', desc: 'Asteroid evasion game built with HTML Canvas', tags: ['Canvas', 'JavaScript'] },
-	{ name: 'Tic-Tac-Toe', href: '/projects/tic-tac-toe', desc: 'Classic tic-tac-toe with customizable board', tags: ['JavaScript'] },
-	{ name: 'Typer Ain', href: '/projects/typer-ain', desc: 'Typing game where letters fall like rain', tags: ['Canvas', 'JavaScript'] },
-	{ name: 'Memory', href: '/projects/memory', desc: 'Classic memory card matching game', tags: ['JavaScript'] },
+	{ name: 'Space Game', href: '/projects/space-game', img: '/images/projects/space-game.jpg', desc: 'Asteroid evasion game built with HTML Canvas', tags: ['Canvas', 'JavaScript'] },
+	{ name: 'Tic-Tac-Toe', href: '/projects/tic-tac-toe', img: '/images/projects/tic-tac-toe.jpg', desc: 'Classic tic-tac-toe with customizable board', tags: ['JavaScript'] },
+	{ name: 'Typer Ain', href: '/projects/typer-ain', img: '/images/projects/typer-ain.jpg', desc: 'Typing game where letters fall like rain', tags: ['Canvas', 'JavaScript'] },
+	{ name: 'Memory', href: '/projects/memory', img: '/images/projects/memory.jpg', desc: 'Classic memory card matching game', tags: ['JavaScript'] },
 ];
 ---
 
@@ -24,8 +24,9 @@ const games = [
 	<section class='section'>
 		<h2>Tools</h2>
 		<div class='grid'>
-			{tools.map(({ name, href, desc, tags }) => (
+			{tools.map(({ name, href, img, desc, tags }) => (
 				<a href={href} class='card'>
+					<img src={img} alt={`${name} screenshot`} class='thumb' loading='lazy' />
 					<h3>{name}</h3>
 					<p>{desc}</p>
 					<div class='tags'>{tags.map(tag => <span class='tag'>{tag}</span>)}</div>
@@ -37,8 +38,9 @@ const games = [
 	<section class='section'>
 		<h2>Games</h2>
 		<div class='grid'>
-			{games.map(({ name, href, desc, tags }) => (
+			{games.map(({ name, href, img, desc, tags }) => (
 				<a href={href} class='card'>
+					<img src={img} alt={`${name} screenshot`} class='thumb' loading='lazy' />
 					<h3>{name}</h3>
 					<p>{desc}</p>
 					<div class='tags'>{tags.map(tag => <span class='tag'>{tag}</span>)}</div>
@@ -64,19 +66,25 @@ const games = [
 	.card {
 		display: flex;
 		flex-direction: column;
-		padding: 1.25rem;
+		padding: 0;
 		border: 1px solid var(--border-color);
 		border-radius: 8px;
 		text-align: left;
 		transition: transform 0.2s, box-shadow 0.2s;
 		color: inherit;
+		overflow: hidden;
 	}
-	.card:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	.thumb {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-bottom: 1px solid var(--border-color);
+	}
+	.card h3, .card p, .card .tags {
+		padding: 0 1.25rem;
 	}
 	.card h3 {
-		margin: 0 0 0.5rem;
+		margin: 1rem 0 0.5rem;
 		font-size: 1.2rem;
 	}
 	.card p {
@@ -84,6 +92,13 @@ const games = [
 		font-size: 0.9rem;
 		line-height: 1.5;
 		opacity: 0.8;
+	}
+	.card .tags {
+		padding-bottom: 1.25rem;
+	}
+	.card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 	}
 	.tags {
 		display: flex;
