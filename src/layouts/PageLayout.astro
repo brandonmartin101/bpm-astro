@@ -8,11 +8,12 @@ const { title, favicon: customFavicon } = Astro.props;
 const { addScript } = Astro.props;
 
 const logoSeed = Math.floor(Math.random() * 20);
-const logo = customFavicon || `/avatars/avatar-${logoSeed}.svg`;
+const logo = `/avatars/avatar-${logoSeed}.svg`;
+const favicon = customFavicon || logo;
 ---
 
 <html lang='en' data-theme='light' transition:persist>
-	<Helmet title={`Brandon Martin | ${title}`} favicon={logo} addScript={addScript} />
+	<Helmet title={`Brandon Martin | ${title}`} favicon={favicon} addScript={addScript} />
 	<body>
 		<Header logo={logo} />
 		<main class='main'>
