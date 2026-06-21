@@ -14,35 +14,40 @@ import Socials from './Socials.astro';
 </footer>
 
 <script is:inline>
-	const STORAGE_KEY = 'theme';
-	const html = document.documentElement;
+	document.addEventListener('astro:page-load', () => {
+		const STORAGE_KEY = 'theme';
+		const html = document.documentElement;
+		const toggle = document.getElementById('theme-toggle');
 
-	function getPreferredTheme() {
-		const stored = localStorage.getItem(STORAGE_KEY);
-		if (stored) return stored;
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-	}
+		if (!toggle) return;
 
-	function syncIcons(theme) {
-		const sun = document.getElementById('icon-sun');
-		const moon = document.getElementById('icon-moon');
-		if (sun) sun.style.display = theme === 'dark' ? 'none' : 'block';
-		if (moon) moon.style.display = theme === 'dark' ? 'block' : 'none';
-	}
+		function getPreferredTheme() {
+			const stored = localStorage.getItem(STORAGE_KEY);
+			if (stored) return stored;
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		}
 
-	function setTheme(theme) {
-		html.setAttribute('data-theme', theme);
-		localStorage.setItem(STORAGE_KEY, theme);
-		syncIcons(theme);
-	}
+		function syncIcons(theme) {
+			const sun = document.getElementById('icon-sun');
+			const moon = document.getElementById('icon-moon');
+			if (sun) sun.style.display = theme === 'dark' ? 'none' : 'block';
+			if (moon) moon.style.display = theme === 'dark' ? 'block' : 'none';
+		}
 
-	const current = getPreferredTheme();
-	setTheme(current);
+		function setTheme(theme) {
+			html.setAttribute('data-theme', theme);
+			localStorage.setItem(STORAGE_KEY, theme);
+			syncIcons(theme);
+		}
 
-	document.getElementById('theme-toggle').onclick = () => {
-		const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-		setTheme(next);
-	};
+		const current = getPreferredTheme();
+		setTheme(current);
+
+		toggle.onclick = () => {
+			const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			setTheme(next);
+		};
+	});
 </script>
 
 <style>

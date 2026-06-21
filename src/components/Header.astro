@@ -24,22 +24,24 @@ const { logo } = Astro.props;
 </header>
 
 <script is:inline>
-	const hamburger = document.getElementById('hamburger');
-	const navigation = document.getElementById('navigation');
+	document.addEventListener('astro:page-load', () => {
+		const hamburger = document.getElementById('hamburger');
+		const navigation = document.getElementById('navigation');
 
-	if (hamburger && navigation) {
-		hamburger.addEventListener('click', () => {
+		if (!hamburger || !navigation) return;
+
+		hamburger.onclick = () => {
 			navigation.classList.toggle('open');
 			hamburger.classList.toggle('open');
-		});
+		};
 
-		navigation.querySelectorAll('a').forEach((link) => {
-			link.addEventListener('click', () => {
+		navigation.addEventListener('click', (e) => {
+			if (e.target.tagName === 'A') {
 				navigation.classList.remove('open');
 				hamburger.classList.remove('open');
-			});
+			}
 		});
-	}
+	});
 </script>
 
 <style>
