@@ -201,7 +201,7 @@ const formatted = computed(() => {
 })
 
 function presetColor(minutes) {
-  return presetColors[presets.indexOf(minutes) % presetColors.length]
+  return presetColors[presets.value.indexOf(minutes) % presetColors.length]
 }
 
 function pickImage() {
