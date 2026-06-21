@@ -109,15 +109,15 @@ const customSeconds = ref(null)
 const currentImageUrl = ref('')
 const imageIndex = ref(0)
 let audioCtx = null
-let masterGain = null
 let rafId = null
+let tickIntervalId = null
 let startTime = 0
 
 const displaySecs = computed(() => Math.ceil(remaining.value))
 
 const progress = computed(() => {
   if (total.value === 0) return 0
-  return displaySecs.value / total.value
+  return remaining.value / total.value
 })
 
 const overlayStyle = computed(() => {
@@ -158,30 +158,39 @@ function initAudio() {
     if (audioCtx.state === 'suspended') {
       audioCtx.resume()
     }
-    masterGain = audioCtx.createGain()
-    masterGain.gain.value = 1
-    masterGain.connect(audioCtx.destination)
   } catch {
   }
 }
 
-function scheduleTicks() {
-  if (!audioCtx || !masterGain) return
+function playTick() {
   try {
-    for (let i = 1; i <= total.value; i++) {
-      const osc = audioCtx.createOscillator()
-      const gain = audioCtx.createGain()
-      osc.connect(gain)
-      gain.connect(masterGain)
-      osc.type = 'sine'
-      osc.frequency.value = 440
-      const t = audioCtx.currentTime + i
-      gain.gain.setValueAtTime(0.08, t)
-      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.06)
-      osc.start(t)
-      osc.stop(t + 0.06)
-    }
+    if (!audioCtx) return
+    if (audioCtx.state === 'suspended') audioCtx.resume()
+    const osc = audioCtx.createOscillator()
+    const gain = audioCtx.createGain()
+    osc.connect(gain)
+    gain.connect(audioCtx.destination)
+    osc.type = 'sine'
+    osc.frequency.value = 600
+    const now = audioCtx.currentTime
+    gain.gain.setValueAtTime(0.08, now)
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05)
+    osc.start(now)
+    osc.stop(now + 0.05)
   } catch {
+  }
+}
+
+function startTickInterval() {
+  stopTickInterval()
+  playTick()
+  tickIntervalId = setInterval(() => playTick(), 1000)
+}
+
+function stopTickInterval() {
+  if (tickIntervalId) {
+    clearInterval(tickIntervalId)
+    tickIntervalId = null
   }
 }
 
@@ -193,7 +202,7 @@ function startTimer(seconds) {
   pickImage()
   screen.value = 'countdown'
   startTime = performance.now()
-  scheduleTicks()
+  startTickInterval()
   tick()
 }
 
@@ -219,19 +228,16 @@ function tick() {
 function finish() {
   cancelAnimationFrame(rafId)
   rafId = null
+  stopTickInterval()
   remaining.value = 0
   screen.value = 'finish'
   playMelody()
 }
 
 function cancel() {
-  if (rafId) {
-    cancelAnimationFrame(rafId)
-    rafId = null
-  }
-  if (masterGain && audioCtx) {
-    masterGain.gain.setValueAtTime(0, audioCtx.currentTime)
-  }
+  cancelAnimationFrame(rafId)
+  rafId = null
+  stopTickInterval()
   screen.value = 'home'
 }
 
@@ -240,14 +246,15 @@ function reset() {
 }
 
 function playMelody() {
-  if (!audioCtx || !masterGain) return
+  if (!audioCtx) return
   try {
+    if (audioCtx.state === 'suspended') audioCtx.resume()
     const notes = [523.25, 587.33, 659.25, 783.99, 880, 1046.5]
     notes.forEach((freq, i) => {
       const osc = audioCtx.createOscillator()
       const gain = audioCtx.createGain()
       osc.connect(gain)
-      gain.connect(masterGain)
+      gain.connect(audioCtx.destination)
       osc.type = 'sine'
       osc.frequency.value = freq
       const start = audioCtx.currentTime + i * 0.2
@@ -261,9 +268,8 @@ function playMelody() {
 }
 
 onUnmounted(() => {
-  if (rafId) {
-    cancelAnimationFrame(rafId)
-  }
+  cancelAnimationFrame(rafId)
+  stopTickInterval()
 })
 </script>
 
