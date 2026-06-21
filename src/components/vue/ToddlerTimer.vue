@@ -1,70 +1,72 @@
 <template>
   <div class="toddler-timer">
-    <div v-if="screen === 'home'" class="screen home">
-      <h1 class="title">Toddler Timer</h1>
-      <p class="subtitle">Pick a time to start!</p>
+    <Transition name="slide" mode="out-in">
+      <div v-if="screen === 'home'" class="screen home" key="home">
+        <h1 class="title">Toddler Timer</h1>
+        <p class="subtitle">Pick a time to start!</p>
 
-      <div class="presets">
-        <button
-          v-for="preset in presets"
-          :key="preset"
-          class="preset-btn"
-          :style="{ background: presetColor(preset) }"
-          @click="startTimer(preset * 60)"
-        >
-          {{ preset }} min
-        </button>
-      </div>
-
-      <div class="custom-section">
-        <p class="custom-label">Or enter a custom time</p>
-        <div class="custom-row">
-          <div class="custom-inputs">
-            <input
-              v-model.number="customMinutes"
-              type="number"
-              min="0"
-              max="999"
-              class="custom-input"
-              placeholder="mm"
-              @keyup.enter="startCustom"
-            />
-            <span class="custom-sep">:</span>
-            <input
-              v-model.number="customSeconds"
-              type="number"
-              min="0"
-              max="59"
-              class="custom-input custom-input-sec"
-              placeholder="ss"
-              @keyup.enter="startCustom"
-            />
-          </div>
-          <button class="start-btn" :disabled="customSeconds == null" @click="startCustom">
-            Start
+        <div class="presets">
+          <button
+            v-for="preset in presets"
+            :key="preset"
+            class="preset-btn"
+            :style="{ background: presetColor(preset) }"
+            @click="startTimer(preset * 60)"
+          >
+            {{ preset }} min
           </button>
         </div>
-      </div>
-    </div>
 
-    <div v-else-if="screen === 'countdown'" class="screen countdown">
-      <div class="image-frame">
-        <img :src="currentImage" alt="" class="timer-image" />
-        <div class="reveal-overlay" :style="overlayStyle"></div>
+        <div class="custom-section">
+          <p class="custom-label">Or enter a custom time</p>
+          <div class="custom-row">
+            <div class="custom-inputs">
+              <input
+                v-model.number="customMinutes"
+                type="number"
+                min="0"
+                max="999"
+                class="custom-input"
+                placeholder="mm"
+                @keyup.enter="startCustom"
+              />
+              <span class="custom-sep">:</span>
+              <input
+                v-model.number="customSeconds"
+                type="number"
+                min="0"
+                max="59"
+                class="custom-input custom-input-sec"
+                placeholder="ss"
+                @keyup.enter="startCustom"
+              />
+            </div>
+            <button class="start-btn" :disabled="customSeconds == null" @click="startCustom">
+              Start
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="time-display" :class="{ urgent: displaySecs <= 10 }">
-        {{ formatted }}
-      </div>
-      <button class="cancel-btn" @click="cancel">Cancel</button>
-    </div>
 
-    <div v-else class="screen finish">
-      <div class="image-frame done">
-        <img :src="currentImage" alt="" class="timer-image" />
+      <div v-else-if="screen === 'countdown'" class="screen countdown" key="countdown">
+        <div class="image-frame">
+          <img :src="currentImage" alt="" class="timer-image" />
+          <div class="reveal-overlay" :style="overlayStyle"></div>
+        </div>
+        <div class="time-display" :class="{ urgent: displaySecs <= 10 }">
+          {{ formatted }}
+        </div>
+        <button class="cancel-btn" @click="cancel">Cancel</button>
       </div>
-      <div class="time-display done">Time's up!</div>
-      <button class="reset-btn" @click="reset">Start Over</button>
-    </div>
+
+      <div v-else class="screen finish" key="finish">
+        <div class="image-frame done">
+          <img :src="currentImage" alt="" class="timer-image" />
+        </div>
+        <div class="time-display done">Time's up!</div>
+        <button class="reset-btn" @click="reset">Start Over</button>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -335,6 +337,20 @@ onUnmounted(() => {
   opacity: 0.25;
 }
 
+/* Screen transitions */
+.slide-enter-active,
+.slide-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-enter-from {
+  transform: translateX(60px);
+  opacity: 0;
+}
+.slide-leave-to {
+  transform: translateX(-60px);
+  opacity: 0;
+}
+
 /* Home screen */
 .screen {
   display: flex;
@@ -402,11 +418,10 @@ onUnmounted(() => {
 
 .custom-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  align-items: center;
+  gap: 4px;
   width: 100%;
   max-width: 360px;
-  justify-content: center;
 }
 
 .custom-inputs {
